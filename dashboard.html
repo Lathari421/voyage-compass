@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市數據儀表板 - Voyage Compass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/index-custom.css" />
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <!-- 左側選單外層固定 -->
+    <div class="menu-container fixed top-0 left-0 w-64 h-screen bg-white z-20 overflow-y-auto shadow">
+        <nav class="left-menu" id="leftMenu">
+            <div class="menu-header">
+                <div class="menu-logo">
+                    <div class="menu-logo-circle">
+                        <img src="sample assets/Voyage Compass Logo.png" alt="Voyage Compass Logo" />
+                    </div>
+                </div>
+            </div>
+            <div class="menu-nav">
+                <div class="menu-section">
+                    <a href="index.html" class="menu-item main-menu-item">首頁</a>
+                    <a href="index.html#characters" class="menu-item main-menu-item">角色情境</a>
+                    <a href="rocket-dev.html" class="menu-item"><i class="fas fa-rocket"
+                            style="margin-right:8px; color:#3b82f6; font-size:1em; vertical-align:middle;"></i>Rocket
+                        Dev</a>
+                    <a href="steady-pro.html" class="menu-item"><i class="fas fa-shield-alt"
+                            style="margin-right:8px; color:#10b981; font-size:1em; vertical-align:middle;"></i>Steady
+                        Pro</a>
+                    <a href="nomad-coder.html" class="menu-item"><i class="fas fa-laptop"
+                            style="margin-right:8px; color:#f59e0b; font-size:1em; vertical-align:middle;"></i>Nomad
+                        Coder</a>
+                    <a href="startup-maverick.html" class="menu-item"><i class="fas fa-lightbulb"
+                            style="margin-right:8px; color:#8b5cf6; font-size:1em; vertical-align:middle;"></i>Startup
+                        Maverick</a>
+                    <a href="index.html#gallery" class="menu-item main-menu-item">城市探索</a>
+                    <a href="new-york-city.html" class="menu-item"><img src="sample assets/nyc_icon_1.png"
+                            alt="New York City"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">New
+                        York City</a>
+                    <a href="san-francisco.html" class="menu-item"><img src="sample assets/sfo_icon_1.png"
+                            alt="San Francisco"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">San
+                        Francisco</a>
+                    <a href="london.html" class="menu-item"><img src="sample assets/lon_icon_1.png" alt="London"
+                            style="margin-right:8px; margin-left:8px; width:1em; height:1em; vertical-align:middle;">London</a>
+                    <a href="singapore.html" class="menu-item"><img src="sample assets/sgp_icon_1.png" alt="Singapore"
+                            style="margin-right:8px;width:1em; height:1em; vertical-align:middle;">Singapore</a>
+                    <a href="sydney.html" class="menu-item"><img src="sample assets/syd_icon_1.png" alt="Sydney"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Sydney</a>
+                    <a href="vancouver.html" class="menu-item"><img src="sample assets/yvr_icon_1.png" alt="Vancouver"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Vancouver</a>
+                    <a href="seoul.html" class="menu-item"><img src="sample assets/sel_icon_1.png" alt="Seoul"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Seoul</a>
+                    <a href="tokyo.html" class="menu-item"><img src="sample assets/tyo_icon_1.png" alt="Tokyo"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Tokyo</a>
+                    <a href="taipei.html" class="menu-item"><img src="sample assets/tpe_icon_1.png" alt="Taipei"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Taipei</a>
+                    <a href="bangkok.html" class="menu-item"><img src="sample assets/bkk_icon_1.png" alt="Bangkok"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Bangkok</a>
+                    <a href="hong-kong.html" class="menu-item"><img src="sample assets/hkg_icon_1.png" alt="Hong Kong"
+                            style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Hong Kong</a>
+                    <a href="#" class="menu-item main-menu-item">關於我們</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- 右側 Dashboard 主體，pl-64 避開 menu -->
+    <main class="flex-1 flex flex-col p-10 gap-8 pl-64 bg-gray-100 min-h-screen">
+        <!-- 頂部標題 -->
+        <h1 class="text-4xl font-bold text-center mb-6">新加坡城市檔案</h1>
+        <!-- 上層資訊卡片與雷達圖 -->
+        <div class="flex flex-row gap-6 justify-center items-start">
+            <div class="flex flex-col gap-4">
+                <div class="bg-white rounded-lg shadow p-6 w-60 text-center">
+                    <div class="text-lg font-semibold">城市分數</div>
+                    <div class="text-3xl font-bold text-blue-600">92.5</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 w-60 text-center">
+                    <div class="text-lg font-semibold">可支配所得</div>
+                    <div class="text-2xl">SGD 3,500 / 月</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 w-60 text-center">
+                    <div class="text-lg font-semibold">人口</div>
+                    <div class="text-base">本地: 5.9M<br>外籍: 38%</div>
+                </div>
+            </div>
+            <!-- 雷達圖 -->
+            <div class="flex items-center justify-center w-96 h-96 bg-white rounded-lg shadow">
+                <!-- 複用 city-profile.html 的 radar chart SVG -->
+                <svg viewBox="-60 -40 560 480" class="radar-svg w-full h-full">
+                    <defs>
+                        <radialGradient id="radarBackground" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+                            <stop offset="70%" style="stop-color:#e2e8f0;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#cbd5e1;stop-opacity:0.6" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="200" cy="200" r="190" fill="url(#radarBackground)" stroke="#cbd5e1" stroke-width="2"
+                        opacity="0.9" />
+                    <g class="radar-grid">
+                        <circle cx="200" cy="200" r="38" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.6" />
+                        <circle cx="200" cy="200" r="76" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.7" />
+                        <circle cx="200" cy="200" r="114" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.8" />
+                        <circle cx="200" cy="200" r="152" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.8" />
+                        <circle cx="200" cy="200" r="190" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.9" />
+                        <line x1="200" y1="200" x2="200" y2="20" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
+                        <line x1="200" y1="200" x2="380" y2="80" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
+                        <line x1="200" y1="200" x2="380" y2="320" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
+                        <line x1="200" y1="200" x2="200" y2="380" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
+                        <line x1="200" y1="200" x2="20" y2="320" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
+                        <line x1="200" y1="200" x2="20" y2="80" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
+                    </g>
+                    <g class="radar-data">
+                        <polygon points="200,34 321,130 332,277 200,328 99,259 110,148" fill="rgba(14, 165, 233, 0.2)"
+                            stroke="#0ea5e9" stroke-width="2" class="radar-area" />
+                    </g>
+                    <g class="radar-points">
+                        <circle cx="200" cy="34" r="8" fill="#0ea5e9" class="radar-dot" data-label="科技職缺" />
+                        <circle cx="321" cy="130" r="8" fill="#14b8a6" class="radar-dot" data-label="生活成本" />
+                        <circle cx="332" cy="277" r="8" fill="#f59e0b" class="radar-dot" data-label="新創機會" />
+                        <circle cx="200" cy="328" r="8" fill="#8b5cf6" class="radar-dot" data-label="安全性" />
+                        <circle cx="99" cy="259" r="8" fill="#ef4444" class="radar-dot" data-label="空氣品質" />
+                        <circle cx="110" cy="148" r="8" fill="#06b6d4" class="radar-dot" data-label="交通便利" />
+                    </g>
+                    <g class="radar-labels">
+                        <text x="200" y="-15" text-anchor="middle" class="radar-label-text">科技職缺</text>
+                        <text x="410" y="93" text-anchor="middle" class="radar-label-text">生活成本</text>
+                        <text x="410" y="307" text-anchor="middle" class="radar-label-text">新創機會</text>
+                        <text x="200" y="415" text-anchor="middle" class="radar-label-text">安全性</text>
+                        <text x="-20" y="307" text-anchor="middle" class="radar-label-text">空氣品質</text>
+                        <text x="-20" y="93" text-anchor="middle" class="radar-label-text">交通便利</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <!-- 中層資訊區塊 -->
+        <div class="grid grid-cols-3 gap-6">
+            <!-- 薪資條狀圖 -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-lg font-semibold mb-2">薪資</div>
+                <div id="salary-chart" class="h-56"></div>
+            </div>
+            <!-- 就業機會 -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-lg font-semibold mb-2">就業機會</div>
+                <div>總數: 12,500+</div>
+                <div>Junior: 7,000</div>
+                <div>Senior: 5,500</div>
+            </div>
+            <!-- 公司規模分布 -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-lg font-semibold mb-2">公司規模</div>
+                <ul>
+                    <li>Micro: 120</li>
+                    <li>Small: 340</li>
+                    <li>Medium: 210</li>
+                    <li>Large: 80</li>
+                    <li>Extra: 10</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 下層資訊區塊 -->
+        <div class="grid grid-cols-3 gap-6">
+            <!-- 生活成本細項 -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-lg font-semibold mb-2">生活成本</div>
+                <ul class="list-disc pl-5">
+                    <li>租金: SGD 3,500 / 月</li>
+                    <li>自費醫療: 中等</li>
+                    <li>全民健保: 有</li>
+                    <li>生活成本指數: 85</li>
+                    <li>稅: 15%</li>
+                    <li>交通時間: 35 分鐘</li>
+                </ul>
+            </div>
+            <!-- 生活成本指數圖 -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-lg font-semibold mb-2">生活成本指數</div>
+                <div id="cost-index-chart" class="h-56"></div>
+            </div>
+            <!-- 安全/天氣/空氣 -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="text-lg font-semibold mb-2">安全與環境</div>
+                <div>安全指數: 96.1</div>
+                <div>犯罪指數: 12.3</div>
+                <div>槍枝法規: 嚴格</div>
+                <div>天氣: 熱帶</div>
+                <div>空氣品質: 良好</div>
+            </div>
+        </div>
+    </main>
+    <!-- menu 互動 JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/index-custom.js"></script>
+    <script>
+        // 預留 D3.js 條狀圖與折線圖容器，後續可直接插入 JS
+    </script>
+</body>
+
+</html>
