@@ -2722,3 +2722,63 @@
     #salary-chart .legend {
         font-size: 14px;
     }
+
+    /* Dashboard 專用樣式類別 */
+    
+    /* 基礎卡片樣式 */
+    .dashboard-card {
+        background: var(--secondary-bg);
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow);
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    /* 小卡片樣式（用於統計數據） */
+    .dashboard-card-small {
+        text-align: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.75rem;
+    }
+    
+    /* 標題樣式 */
+    .dashboard-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--secondary-text);
+        margin-bottom: 1rem;
+    }
+    
+    /* 城市檔案標題樣式 */
+    .city-profile-header {
+        background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-navy) 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Dashboard 專用的背景圖片 */
+    main .city-profile-header {
+        background: url('../images/large/singapore1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+    .city-profile-content h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: white;
+    }
+    
+    .city-profile-content h3 {
+        font-size: 1.125rem;
+        font-weight: 400;
+        opacity: 0.9;
+        color: white;
+    }

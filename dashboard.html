@@ -103,34 +103,29 @@
 	</nav>
     
     <main class="flex-1 flex flex-col px-2 pb-5 gap-8 pl-64 bg-gray-100 min-h-screen mx-auto">
-        <section class="wrapper style1 city-profile-full-width mb-8">
-            <div class="inner">
-                <div class="city-profile-header" data-city="singapore">
-                    <div class="city-profile-content">
-                        <h1>Singapore 城市檔案</h1>
-                        <h3>亞洲金融科技樞紐與多元文化融合之都</h3>
-                    </div>
-                </div>
+        <section class="city-profile-header mb-8" data-city="singapore">
+            <div class="city-profile-content">
+                <h1>Singapore 城市檔案</h1>
+                <h3>亞洲金融科技樞紐與多元文化融合之都</h3>
             </div>
         </section>
 
-        <div class="mx-auto">
-            <div class="grid grid-cols-3 gap-6 mb-6 px-2">
+        <div class="grid grid-cols-3 gap-6 mb-6 w-full">
                 <div class="flex flex-col gap-6 col-span-1">
-                    <div class="bg-white rounded-lg shadow p-6 text-center flex-1 flex flex-col justify-center">
+                    <div class="dashboard-card dashboard-card-small">
                         <div class="text-lg font-semibold text-gray-600">城市分數</div>
-                        <div class="text-4xl font-bold text-blue-600 mt-2">92.5</div>
+                        <div class="text-4xl font-bold text-blue-600">92.5</div>
                     </div>
-                    <div class="bg-white rounded-lg shadow p-6 text-center flex-1 flex flex-col justify-center">
+                    <div class="dashboard-card dashboard-card-small">
                         <div class="text-lg font-semibold text-gray-600">可支配所得</div>
-                        <div class="text-2xl font-semibold text-gray-800 mt-2">SGD 3,500 / 月</div>
+                        <div class="text-2xl font-semibold text-gray-800">SGD 3,500 / 月</div>
                     </div>
-                    <div class="bg-white rounded-lg shadow p-6 text-center flex-1 flex flex-col justify-center">
+                    <div class="dashboard-card dashboard-card-small">
                         <div class="text-lg font-semibold text-gray-600">人口</div>
-                        <div class="text-lg text-gray-800 mt-2">本地: 5.9M<br><span class="text-base text-gray-500">外籍: 38%</span></div>
+                        <div class="text-lg text-gray-800">本地: 5.9M<br><span class="text-base text-gray-500">外籍: 38%</span></div>
                     </div>
                 </div>
-                <div class="col-span-2 bg-white rounded-lg shadow p-4 flex items-center justify-center">
+                <div class="col-span-2 dashboard-card flex items-center justify-center">
                     <svg viewBox="-60 -40 560 480" class="radar-svg w-full h-full">
                          <defs>
                         <radialGradient id="radarBackground" cx="50%" cy="50%" r="50%">
@@ -178,22 +173,22 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-6 mb-6 px-2">
-                <div class="col-span-2 bg-white rounded-lg shadow p-6">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-4">薪資水平分析 (年薪)</h3>
+            <div class="grid grid-cols-3 gap-6 mb-6 w-full">
+                <div class="col-span-2 dashboard-card">
+                    <h3 class="dashboard-title">薪資水平分析 (年薪)</h3>
                     <div class="h-80">
                         <canvas id="singaporeSalaryChart"></canvas>
                     </div>
                 </div>
                 <div class="col-span-1 flex flex-col gap-6">
-                    <div class="bg-white rounded-lg shadow p-6 flex-1">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-2">就業機會</h3>
+                    <div class="dashboard-card flex-1">
+                        <h3 class="dashboard-title">就業機會</h3>
                         <div>總數: 12,500+</div>
                         <div>Junior: 7,000</div>
                         <div>Senior: 5,500</div>
                     </div>
-                    <div class="bg-white rounded-lg shadow p-6 flex-1">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-2">公司規模</h3>
+                    <div class="dashboard-card flex-1">
+                        <h3 class="dashboard-title">公司規模</h3>
                         <ul>
                             <li>Micro: 120</li>
                             <li>Small: 340</li>
@@ -205,9 +200,9 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-6 px-2">
-                <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">生活成本</h3>
+            <div class="grid grid-cols-3 gap-6 w-full">
+                <div class="dashboard-card">
+                    <h3 class="dashboard-title">生活成本</h3>
                     <ul class="list-disc pl-5">
                         <li>租金: SGD 3,500 / 月</li>
                         <li>自費醫療: 中等</li>
@@ -217,12 +212,12 @@
                         <li>交通時間: 35 分鐘</li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">生活成本指數</h3>
+                <div class="dashboard-card">
+                    <h3 class="dashboard-title">生活成本指數</h3>
                     <div id="cost-index-chart" class="h-56"></div>
                 </div>
-                <div class="bg-white rounded-lg shadow p-6">
-                     <h3 class="text-lg font-semibold text-gray-700 mb-2">安全與環境</h3>
+                <div class="dashboard-card">
+                     <h3 class="dashboard-title">安全與環境</h3>
                     <div>安全指數: 96.1</div>
                     <div>犯罪指數: 12.3</div>
                     <div>槍枝法規: 嚴格</div>
@@ -230,7 +225,6 @@
                     <div>空氣品質: 良好</div>
                 </div>
             </div>
-        </div>
     </main>
 
     <script src="assets/js/jquery.min.js"></script>
