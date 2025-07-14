@@ -113,33 +113,171 @@
         <section class="wrapper style1">
             <div class="flex w-full min-h-[300px] pl-24 gap-6">
                 <!-- 左側：三個元素 -->
-                <div class="w-2/5 grid grid-rows-2 gap-6">
-                    <div class="bg-white rounded-lg shadow p-6 flex items-center gap-4">
-                        <img src="sample assets/radar.gif" alt="Rocket Dev" class="character-image w-20 h-20 object-contain" />
+                <div class="w-2/5 grid grid-rows-[60%_40%] gap-6">
+                    <div class="bg-white rounded-lg shadow p-6 flex items-center gap-4" style="background-image: url('sample assets/Rocket_Dev.png'); background-size: cover; background-position: center;">
                         <div>
-                            <h2><i class="fas fa-rocket" style="margin-right: 10px; color: #3b82f6;"></i>Rocket Dev</h2>
-                            <h3>火箭升薪衝履歷</h3>
+                            <h2 class="text-white" style="color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">
+                                <i class="fas fa-rocket" style="margin-right: 10px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.7);"></i>
+                                Rocket Dev
+                            </h2>
+                            <h3 class="text-white" style="color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">火箭升薪衝履歷</h3>
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow p-6 flex flex-col justify-center">
                         <h3>角色描述：</h3>
-                        <ol class="list-decimal list-inside">
-                            <li>專為追求快速職涯成長的開發者設計</li>
-                            <li>透過技能提升和策略性職涯規劃實現薪資飛躍</li>
-                            <li>追求技術挑戰和創新專案機會</li>
-                            <li>重視學習成長和職業發展速度</li>
-                        </ol>
+                            <p>今天你是一位滿腔熱血剛入行的工程師，揹著最新技術當燃料，鎖定全球職涯發射軌道。你靠精準規劃與持續進修，把每次 commit 轉化為加薪推進器，在最短時間內衝上更大的專案與更高的薪資天空。</p>
                     </div>
                 </div>
                 <!-- 右側：2/3 container -->
                 <div class="w-3/5 flex items-center justify-center pr-16">
                     <div class="grid grid-cols-3 gap-6 w-full h-full">
-                        <div class="character-card bg-white rounded-lg shadow p-6">卡片1內容</div>
-                        <div class="character-card bg-white rounded-lg shadow p-6">卡片2內容</div>
-                        <div class="character-card bg-white rounded-lg shadow p-6">卡片3內容</div>
-                        <div class="character-card bg-white rounded-lg shadow p-6">卡片4內容</div>
-                        <div class="character-card bg-white rounded-lg shadow p-6">卡片5內容</div>
-                        <div class="character-card bg-white rounded-lg shadow p-6">卡片6內容</div>
+                        <a href="new-york-city.html" class="character-card-link group">
+                            <div class="character-card rounded-lg shadow p-6 h-96 relative overflow-hidden" style="background-image: url('assets/images/New York.png'); background-size: cover; background-position: center;">
+                                <!-- Ranking/Score 標籤 -->
+                                <div class="absolute top-4 left-4 z-30">
+                                    <div class="bg-black/40 text-white rounded px-3 py-1 mb-2 font-bold text-lg">🏆 Rank 1</div>
+                                    <div class="bg-black/40 text-white rounded px-3 py-1 mb-2 font-bold text-lg">New York City</div>
+                                    <div class="bg-black/30 text-white rounded px-3 py-1 font-semibold">分數：100</div>
+                                </div>
+                                <!-- Overlay -->
+                                <div class="absolute inset-0 bg-black/30 z-0"></div>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
+                                    <h3 class="text-2xl font-bold mb-2 max-w-[90%] mx-auto text-center break-words" style="color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">紐約</h3>
+                                    <p class="text-base max-w-[90%] mx-auto text-center break-words" style="color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">全球金融中心，無限可能的職涯發展機會</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="london.html" class="character-card-link group">
+                            <div class="character-card rounded-lg shadow p-6 h-96 relative overflow-hidden" style="background-image: url('assets/images/London.png'); background-size: cover; background-position: center;">
+                                <div class="absolute top-4 left-4 z-30">
+                                    <div class="bg-black/40 text-white rounded px-3 py-1 mb-2 font-bold text-lg">🥈 Rank 2</div>
+                                    <div class="bg-black/30 text-white rounded px-3 py-1 font-semibold">分數：80</div>
+                                </div>
+                                <div class="absolute inset-0 bg-black/30 z-0"></div>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
+                                    <h3 class="text-2xl font-bold mb-2 max-w-[90%] mx-auto text-center break-words" style="color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">倫敦</h3>
+                                    <p class="text-base max-w-[90%] mx-auto text-center break-words" style="color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">歐洲金融科技重鎮，創新與傳統的完美融合</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="singapore.html" class="character-card-link group">
+                            <div class="character-card rounded-lg shadow p-6 h-96 relative overflow-hidden" style="background-image: url('assets/images/Singapore.png'); background-size: cover; background-position: center;">
+                                <div class="absolute top-4 left-4 z-30">
+                                    <div class="bg-black/40 text-white rounded px-3 py-1 mb-2 font-bold text-lg">🥉 Rank 3</div>
+                                    <div class="bg-black/30 text-white rounded px-3 py-1 font-semibold">分數：60</div>
+                                </div>
+                                <div class="absolute inset-0 bg-black/30 z-0"></div>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
+                                    <h3 class="text-2xl font-bold mb-2 max-w-[90%] mx-auto text-center break-words" style="color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">新加坡</h3>
+                                    <p class="text-base max-w-[90%] mx-auto text-center break-words" style="color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">亞洲金融科技樞紐，多元文化與高效生活</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <div class="bg-white rounded-lg shadow p-6 max-w-sm font-sans">
+
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xs font-bold text-gray-500">Livability</h3>
+                                <!-- <i class="fas fa-city text-blue-500"></i> -->
+                            </div>
+                        
+                            <div class="space-y-4">
+                        
+                                <div class="city-item text-xs whitespace-nowrap">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-gray-800">#1 New York City</span>
+                                    </div>
+                                    <span class="font-bold text-amber-600 ml-1 block text-right w-full">95/100</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-amber-500 h-2 rounded-full" style="width: 95%;"></div>
+                                    </div>
+                                </div>
+                        
+                                <div class="city-item text-xs whitespace-nowrap">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-gray-800">#2 London</span>
+                                    </div>
+                                    <span class="font-bold text-blue-600 ml-1 block text-right w-full">91/100</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-500 h-2 rounded-full" style="width: 91%;"></div>
+                                    </div>
+                                </div>
+                        
+                                <div class="city-item text-xs whitespace-nowrap">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-gray-800">#3 Tokyo</span>
+                                    </div>
+                                    <span class="font-bold text-blue-500 ml-1 block text-right w-full">88/100</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-400 h-2 rounded-full" style="width: 88%;"></div>
+                                    </div>
+                                </div>
+                                
+                        
+                            </div>
+                            
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-6 max-w-sm font-sans">
+
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xs font-bold text-gray-500">Livability</h3>
+                                <!-- <i class="fas fa-city text-blue-500"></i> -->
+                            </div>
+                        
+                            <div class="space-y-4">
+                        
+                                <div class="city-item text-xs whitespace-nowrap">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-gray-800">#1 New York City</span>
+                                    </div>
+                                    <span class="font-bold text-amber-600 ml-1 block text-right w-full">95/100</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-amber-500 h-2 rounded-full" style="width: 95%;"></div>
+                                    </div>
+                                </div>
+                        
+                                <div class="city-item text-xs whitespace-nowrap">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-gray-800">#2 London</span>
+                                    </div>
+                                    <span class="font-bold text-blue-600 ml-1 block text-right w-full">91/100</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-500 h-2 rounded-full" style="width: 91%;"></div>
+                                    </div>
+                                </div>
+                        
+                                <div class="city-item text-xs whitespace-nowrap">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-gray-800">#3 Tokyo</span>
+                                    </div>
+                                    <span class="font-bold text-blue-500 ml-1 block text-right w-full">88/100</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-400 h-2 rounded-full" style="width: 88%;"></div>
+                                    </div>
+                                </div>
+                                
+                        
+                            </div>
+                        
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow">
+                        <div>
+                            <span class="font-bold text-gray-800">#1 New York City</span>
+                            <p class="text-sm text-gray-500">Livability Score</p>
+                        </div>
+                        <div class="relative w-16 h-16">
+                            <svg class="w-full h-full" viewBox="0 0 36 36">
+                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                      fill="none" stroke="#e6e6e6" stroke-width="3" />
+                                <path class="text-blue-500"
+                                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                      fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="95, 100"
+                                      stroke-linecap="round" />
+                            </svg>
+                            <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full">
+                                <span class="text-xl font-bold text-blue-600">95</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
