@@ -98,114 +98,76 @@ document.querySelectorAll('.gallery-item').forEach(item => {
     });
 }); 
 
-// D3.js Salary Bar Chart for city-profile.html
-window.createSalaryBarChart = function() {
-    const data = [
-        { "Metric": "low", "Junior": 53000, "Senior": 95900 },
-        { "Metric": "median", "Junior": 62900, "Senior": 131400 },
-        { "Metric": "high", "Junior": 89300, "Senior": 209000 }
-    ];
-    const margin = {top: 50, right: 30, bottom: 40, left: 60};
-    const legendHeight = 30;
-    const container = document.getElementById('salary-chart');
-    if (!container) return;
-    const width = Math.min(container.offsetWidth || 500, 600) - margin.left - margin.right;
-    const height = 360 - margin.top - margin.bottom;
-    d3.select("#salary-chart").html("");
-    const svg = d3.select("#salary-chart")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom + legendHeight);
-    // legend group在svg最外層
-    const legendGroup = svg.append("g")
-        .attr("class", "legend")
-        .attr("transform", `translate(${(width + margin.left + margin.right)/2 - 60}, 20)`);
-    const legendData = [
-        {label: 'Junior', color: 'bar-junior'},
-        {label: 'Senior', color: 'bar-senior'}
-    ];
-    const legendItem = legendGroup.selectAll("g")
-        .data(legendData)
-        .enter().append("g")
-        .attr("transform", (d, i) => `translate(${i * 120}, 0)`);
-    legendItem.append("rect")
-        .attr("width", 19)
-        .attr("height", 19)
-        .attr("class", d => d.color);
-    legendItem.append("text")
-        .attr("x", 24)
-        .attr("y", 9.5)
-        .attr("dy", "0.32em")
-        .attr("text-anchor", "start")
-        .text(d => d.label);
-    // chart 主體下移 legendHeight
-    const chartG = svg.append("g")
-        .attr("transform", `translate(${margin.left},${margin.top + legendHeight})`);
-    const tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("z-index", 9999);
-    const metrics = data.map(d => d.Metric);
-    const levels = Object.keys(data[0]).filter(k => k !== 'Metric');
-    const x0 = d3.scaleBand()
-        .domain(metrics)
-        .rangeRound([0, width])
-        .paddingInner(0.1);
-    const x1 = d3.scaleBand()
-        .domain(levels)
-        .rangeRound([0, x0.bandwidth()])
-        .padding(0.05);
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d3.max(levels, level => d[level]))]).nice()
-        .rangeRound([height, 0]);
-    chartG.append("g")
-        .selectAll("g")
-        .data(data)
-        .join("g")
-            .attr("transform", d => `translate(${x0(d.Metric)},0)`)
-        .selectAll("rect")
-        .data(d => levels.map(key => ({key, value: d[key]})))
-        .join("rect")
-            .attr("x", d => x1(d.key))
-            .attr("y", d => y(d.value))
-            .attr("width", x1.bandwidth())
-            .attr("height", d => height - y(d.value))
-            .attr("class", d => d.key === 'Junior' ? 'bar-junior' : 'bar-senior')
-            .on("mouseover", (event, d) => {
-                tooltip.transition().duration(200).style("opacity", .9);
-                tooltip.html(`<strong>${d.key}</strong><br/>Salary: ${d3.format("$,.0f")(d.value)}`)
-                    .style("left", (event.pageX + 5) + "px")
-                    .style("top", (event.pageY - 28) + "px");
-            })
-            .on("mouseout", d => {
-                tooltip.transition().duration(500).style("opacity", 0);
-            });
-    chartG.append("g")
-        .attr("class", "x-axis")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x0))
-        .append("text")
-        .attr("x", width / 2)
-        .attr("y", margin.bottom - 5)
-        .attr("fill", "black")
-        .attr("font-weight", "bold")
-        .attr("text-anchor", "middle")
-        .attr("class", "axis-label")
-        .text("Salary Metric (Low, Median, High)");
-    chartG.append("g")
-        .attr("class", "y-axis")
-        .call(d3.axisLeft(y).ticks(null, "s"))
-        .append("text")
-        .attr("x", -margin.left)
-        .attr("y", -10)
-        .attr("fill", "black")
-        .attr("font-weight", "bold")
-        .attr("text-anchor", "start")
-        .attr("class", "axis-label")
-        .text("Salary (SGD)");
-};
-// city-profile.html 自動載入
-if (document.getElementById('salary-chart')) {
-    window.addEventListener('DOMContentLoaded', function() {
-        setTimeout(window.createSalaryBarChart, 100);
-    });
+// 新增 Chart.js 薪資條狀圖
+if (document.getElementById('singaporeSalaryChart')) {
+  const labels = ['Low', 'Median', 'High'];
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Junior Salary (USD)',
+        data: [53000, 62900, 89300],
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 0.5
+      },
+      {
+        label: 'Senior Salary (USD)',
+        data: [95900, 131400, 209000],
+        backgroundColor: 'rgba(255, 159, 64, 0.6)',
+        borderColor: 'rgba(255, 159, 64, 1)',
+        borderWidth: 0.5
+      }
+    ]
+  };
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: 0 },
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            font: { size: 12 },
+            boxWidth: 20,
+            boxHeight: 12,
+            padding: 2,
+            maxWidth: 300
+          }
+        },
+        title: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              let label = context.dataset.label || '';
+              if (label) label += ': ';
+              if (context.parsed.y !== null) {
+                label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(context.parsed.y);
+              }
+              return label;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: { display: false },
+          ticks: {
+            callback: function(value) { return '$' + (value / 1000) + 'k'; }
+          }
+        },
+        x: {
+          title: { display: false }
+        }
+      }
+    }
+  };
+  const ctx = document.getElementById('singaporeSalaryChart').getContext('2d');
+  new Chart(ctx, config);
 } 
