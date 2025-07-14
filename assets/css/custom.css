@@ -1382,7 +1382,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(135deg, rgba(20, 184, 166, 0.8) 0%, rgba(13, 148, 136, 0.9) 100%);
+        background: rgba(0, 0, 0, 0.3); /* 調整透明度為 0.3 */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1413,6 +1413,7 @@
 
     .city-info {
         padding: 1.5rem;
+        font-size: 1.5rem; /* 統一字體大小 */
     }
 
     .city-info h3 {
@@ -2781,4 +2782,17 @@
         font-weight: 400;
         opacity: 0.9;
         color: white;
+    }
+
+    .character-card-link {
+      display: block;
+      text-decoration: none;
+    }
+    .character-card-link .character-card {
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .character-card-link:hover .character-card {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      transform: translateY(-4px) scale(1.03);
+      cursor: pointer;
     }
