@@ -5,16 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>城市數據儀表板 - Voyage Compass</title>
+    
+    <!-- ========================================
+        PAGE: Dashboard
+        PURPOSE: 新加坡城市數據儀表板，展示詳細的統計資訊和視覺化圖表
+        FEATURES: 雷達圖、薪資分析、就業數據、響應式設計
+        AUTHOR: Voyage Compass Team
+        LAST UPDATED: 2024-12-19
+    ======================================== -->
+    
+    <!-- 外部依賴庫 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    
+    <!-- 自定義樣式檔案 -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/custom.css" />
     <link rel="stylesheet" href="assets/css/index-custom.css" />
 </head>
 
 <body class="bg-gray-100 min-h-screen">
+    <!-- ========================================
+        COMPONENT: Left Navigation Menu
+        PURPOSE: 固定式側邊導航選單，提供全站導航功能
+        FEATURES: Logo展示、角色情境、城市探索、響應式折疊
+    ======================================== -->
     <nav class="left-menu" id="leftMenu">
+		<!-- Logo 區域 -->
 		<div class="menu-header">
 			<div class="menu-logo">
 				<div class="menu-logo-circle">
@@ -23,14 +41,18 @@
 			</div>
 		</div>
 
+		<!-- 導航項目區域 -->
 		<div class="menu-nav">
 			<div class="menu-section">
+				<!-- 主要導航項目 -->
 				<a href="index.html" class="menu-item main-menu-item">
 					首頁
 				</a>
 				<a href="index.html#characters" class="menu-item main-menu-item">
 					角色情境
 				</a>
+				
+				<!-- 角色情境子項目 - 4種職涯發展模式 -->
 				<a href="rocket-dev.html" class="menu-item">
 					<i class="fas fa-rocket"
 						style="margin-right:8px; color:#3b82f6; font-size:1em; vertical-align:middle;"></i>Rocket Dev
@@ -48,9 +70,13 @@
 						style="margin-right:8px; color:#8b5cf6; font-size:1em; vertical-align:middle;"></i>Startup
 					Maverick
 				</a>
+				
+				<!-- 城市探索區塊 -->
 				<a href="index.html#gallery" class="menu-item main-menu-item">
 					城市探索
 				</a>
+				
+				<!-- 城市子項目 - 10個主要國際城市 -->
 				<a href="new-york-city.html" class="menu-item">
 					<img src="sample assets/nyc_icon_1.png" alt="New York City"
 						style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">New York City
@@ -95,6 +121,8 @@
 					<img src="sample assets/hkg_icon_1.png" alt="Hong Kong"
 						style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Hong Kong
 				</a>
+				
+				<!-- 關於我們 -->
 				<a href="#" class="menu-item main-menu-item">
 					關於我們
 				</a>
@@ -102,7 +130,14 @@
 		</div>
 	</nav>
     
+    <!-- ========================================
+        COMPONENT: Main Content Area
+        PURPOSE: 儀表板主要內容區域，包含城市檔案和數據視覺化
+        LAYOUT: 響應式網格佈局，左側選單偏移 64 (pl-64)
+    ======================================== -->
     <main class="flex-1 flex flex-col px-2 pb-5 gap-8 pl-64 bg-gray-100 min-h-screen mx-auto">
+        
+        <!-- 城市檔案標題區塊 - 動態背景圖片 -->
         <section class="city-profile-header mb-8" data-city="singapore">
             <div class="city-profile-content">
                 <h1>Singapore 城市檔案</h1>
@@ -110,38 +145,65 @@
             </div>
         </section>
 
+        <!-- ========================================
+            SECTION: 數據概覽網格
+            PURPOSE: 顯示城市關鍵指標和雷達圖
+            LAYOUT: 3列網格，左側1列小卡片，右側2列雷達圖
+        ======================================== -->
         <div class="grid grid-cols-3 gap-6 mb-6 w-full">
-                <div class="flex flex-col gap-6 col-span-1">
-                    <div class="dashboard-card dashboard-card-small">
-                        <div class="text-lg font-semibold text-gray-600">城市分數</div>
-                        <div class="text-4xl font-bold text-blue-600">92.5</div>
-                    </div>
-                    <div class="dashboard-card dashboard-card-small">
-                        <div class="text-lg font-semibold text-gray-600">可支配所得</div>
-                        <div class="text-2xl font-semibold text-gray-800">SGD 3,500 / 月</div>
-                    </div>
-                    <div class="dashboard-card dashboard-card-small">
-                        <div class="text-lg font-semibold text-gray-600">人口</div>
-                        <div class="text-lg text-gray-800">本地: 5.9M<br><span class="text-base text-gray-500">外籍: 38%</span></div>
-                    </div>
+            <!-- 左側：關鍵指標卡片 (1列) -->
+            <div class="flex flex-col gap-6 col-span-1">
+                <!-- 城市分數卡片 -->
+                <div class="dashboard-card dashboard-card-small">
+                    <div class="text-lg font-semibold text-gray-600">城市分數</div>
+                    <div class="text-4xl font-bold text-blue-600">92.5</div>
                 </div>
-                <div class="col-span-2 dashboard-card flex items-center justify-center">
-                    <svg viewBox="-60 -40 560 480" class="radar-svg w-full h-full">
-                         <defs>
+                
+                <!-- 可支配所得卡片 -->
+                <div class="dashboard-card dashboard-card-small">
+                    <div class="text-lg font-semibold text-gray-600">可支配所得</div>
+                    <div class="text-2xl font-semibold text-gray-800">SGD 3,500 / 月</div>
+                </div>
+                
+                <!-- 人口統計卡片 -->
+                <div class="dashboard-card dashboard-card-small">
+                    <div class="text-lg font-semibold text-gray-600">人口</div>
+                    <div class="text-lg text-gray-800">本地: 5.9M<br><span class="text-base text-gray-500">外籍: 38%</span></div>
+                </div>
+            </div>
+            
+            <!-- 右側：雷達圖視覺化區域 (2列) -->
+            <div class="col-span-2 dashboard-card flex items-center justify-center">
+                <!-- ========================================
+                    COMPONENT: SVG Radar Chart
+                    PURPOSE: 顯示城市6個關鍵指標的視覺化評分
+                    FEATURES: 漸層背景、網格線、數據點、多邊形填充
+                    DATA: 科技職缺、生活成本、新創機會、安全性、空氣品質、交通便利
+                ======================================== -->
+                <svg viewBox="-60 -40 560 480" class="radar-svg w-full h-full">
+                    <!-- 漸層背景定義 -->
+                    <defs>
                         <radialGradient id="radarBackground" cx="50%" cy="50%" r="50%">
                             <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
                             <stop offset="70%" style="stop-color:#e2e8f0;stop-opacity:0.8" />
                             <stop offset="100%" style="stop-color:#cbd5e1;stop-opacity:0.6" />
                         </radialGradient>
                     </defs>
+                    
+                    <!-- 背景圓圈 - 提供視覺基礎 -->
                     <circle cx="200" cy="200" r="190" fill="url(#radarBackground)" stroke="#cbd5e1" stroke-width="2"
                         opacity="0.9" />
+                    
+                    <!-- 網格線組 - 5個同心圓 + 6條放射線 -->
                     <g class="radar-grid">
+                        <!-- 同心圓網格 (從內到外) -->
                         <circle cx="200" cy="200" r="38" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.6" />
                         <circle cx="200" cy="200" r="76" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.7" />
                         <circle cx="200" cy="200" r="114" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.8" />
                         <circle cx="200" cy="200" r="152" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.8" />
                         <circle cx="200" cy="200" r="190" fill="none" stroke="#d1d5db" stroke-width="1" opacity="0.9" />
+                        
+                        <!-- 放射線網格 (6條線，每60度一條) -->
                         <line x1="200" y1="200" x2="200" y2="20" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
                         <line x1="200" y1="200" x2="380" y2="80" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
                         <line x1="200" y1="200" x2="380" y2="320" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
@@ -149,10 +211,14 @@
                         <line x1="200" y1="200" x2="20" y2="320" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
                         <line x1="200" y1="200" x2="20" y2="80" stroke="#e2e8f0" stroke-width="1" opacity="0.6" />
                     </g>
+                    
+                    <!-- 數據區域 - 多邊形填充顯示整體評分 -->
                     <g class="radar-data">
                         <polygon points="200,34 321,130 332,277 200,328 99,259 110,148" fill="rgba(14, 165, 233, 0.2)"
                             stroke="#0ea5e9" stroke-width="2" class="radar-area" />
                     </g>
+                    
+                    <!-- 數據點 - 6個指標的具體位置 -->
                     <g class="radar-points">
                         <circle cx="200" cy="34" r="8" fill="#0ea5e9" class="radar-dot" data-label="科技職缺" />
                         <circle cx="321" cy="130" r="8" fill="#14b8a6" class="radar-dot" data-label="生活成本" />
@@ -161,6 +227,8 @@
                         <circle cx="99" cy="259" r="8" fill="#ef4444" class="radar-dot" data-label="空氣品質" />
                         <circle cx="110" cy="148" r="8" fill="#06b6d4" class="radar-dot" data-label="交通便利" />
                     </g>
+                    
+                    <!-- 標籤文字 - 指標名稱 -->
                     <g class="radar-labels">
                         <text x="200" y="-15" text-anchor="middle" class="radar-label-text">科技職缺</text>
                         <text x="410" y="93" text-anchor="middle" class="radar-label-text">生活成本</text>
@@ -169,36 +237,48 @@
                         <text x="-20" y="307" text-anchor="middle" class="radar-label-text">空氣品質</text>
                         <text x="-20" y="93" text-anchor="middle" class="radar-label-text">交通便利</text>
                     </g>
-                    </svg>
-                </div>
+                </svg>
             </div>
+        </div>
 
-            <div class="grid grid-cols-3 gap-6 mb-6 w-full">
-                <div class="col-span-2 dashboard-card">
-                    <h3 class="dashboard-title">薪資水平分析 (年薪)</h3>
-                    <div class="h-80">
-                        <canvas id="singaporeSalaryChart"></canvas>
-                    </div>
-                </div>
-                <div class="col-span-1 flex flex-col gap-6">
-                    <div class="dashboard-card flex-1">
-                        <h3 class="dashboard-title">就業機會</h3>
-                        <div>總數: 12,500+</div>
-                        <div>Junior: 7,000</div>
-                        <div>Senior: 5,500</div>
-                    </div>
-                    <div class="dashboard-card flex-1">
-                        <h3 class="dashboard-title">公司規模</h3>
-                        <ul>
-                            <li>Micro: 120</li>
-                            <li>Small: 340</li>
-                            <li>Medium: 210</li>
-                            <li>Large: 80</li>
-                            <li>Extra: 10</li>
-                        </ul>
-                    </div>
+        <!-- ========================================
+            SECTION: 詳細數據分析
+            PURPOSE: 薪資水平分析和就業市場數據
+            LAYOUT: 3列網格，左側2列圖表，右側1列統計卡片
+        ======================================== -->
+        <div class="grid grid-cols-3 gap-6 mb-6 w-full">
+            <!-- 左側：薪資水平分析圖表 (2列) -->
+            <div class="col-span-2 dashboard-card">
+                <h3 class="dashboard-title">薪資水平分析 (年薪)</h3>
+                <div class="h-80">
+                    <!-- Chart.js 圖表容器 -->
+                    <canvas id="singaporeSalaryChart"></canvas>
                 </div>
             </div>
+            
+            <!-- 右側：就業市場統計卡片 (1列) -->
+            <div class="col-span-1 flex flex-col gap-6">
+                <!-- 就業機會統計 -->
+                <div class="dashboard-card flex-1">
+                    <h3 class="dashboard-title">就業機會</h3>
+                    <div>總數: 12,500+</div>
+                    <div>Junior: 7,000</div>
+                    <div>Senior: 5,500</div>
+                </div>
+                
+                <!-- 公司規模分布 -->
+                <div class="dashboard-card flex-1">
+                    <h3 class="dashboard-title">公司規模</h3>
+                    <ul>
+                        <li>Micro: 120</li>
+                        <li>Small: 340</li>
+                        <li>Medium: 210</li>
+                        <li>Large: 80</li>
+                        <li>Extra: 10</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
             <div class="grid grid-cols-3 gap-6 w-full">
                 <div class="dashboard-card">

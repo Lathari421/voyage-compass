@@ -8,6 +8,7 @@
 5. [API 整合指南](#api-整合指南)
 6. [部署說明](#部署說明)
 7. [開發指南](#開發指南)
+8. [程式碼註解指南](#程式碼註解指南)
 
 ---
 
@@ -248,107 +249,543 @@ function updateRadarChart(data) {
 # 直接部署到 Web 伺服器
 cp -r "Voyage Compass/" /var/www/html/
 
-# 或使用 Python 簡單伺服器
-cd "Voyage Compass"
-python3 -m http.server 8000
+# 或使用 GitHub Pages
+# 1. 推送到 GitHub
+git push origin main
+# 2. 在 GitHub 設定中啟用 Pages
 ```
 
-### 2. Flask 整合部署
-```python
-# app.py
-from flask import Flask, render_template, jsonify
-import os
+### 2. 本地開發環境
+```bash
+# 使用 Python 簡易伺服器
+python -m http.server 8000
 
-app = Flask(__name__)
+# 或使用 Node.js
+npx serve .
 
-# 靜態檔案路徑設定
-app.static_folder = 'assets'
-app.static_url_path = '/assets'
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/city/<city_name>')
-def city_page(city_name):
-    return render_template(f'{city_name}.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# 或使用 PHP
+php -S localhost:8000
 ```
-
-### 3. 環境需求
-- **Web 伺服器**：Apache, Nginx, 或 Python SimpleHTTPServer
-- **瀏覽器支援**：Chrome 60+, Firefox 55+, Safari 12+
-- **檔案權限**：確保圖片檔案可讀取
 
 ---
 
 ## 👨‍💻 開發指南
 
-### 1. 新增城市頁面
-1. 複製現有城市頁面模板
-2. 修改 `data-city` 屬性
-3. 更新城市特定內容
-4. 在 CSS 中新增背景圖片設定
-5. 更新導航選單
+### 1. 開發環境設定
+```bash
+# 克隆專案
+git clone https://github.com/Lathari421/voyage-compass.git
+cd voyage-compass
 
-### 2. 修改樣式
-- **主要樣式**：`assets/css/main.css`
-- **自定義樣式**：`assets/css/custom.css`
-- **首頁專用**：`assets/css/index-custom.css`
+# 安裝依賴 (如果需要)
+npm install
+# 或
+yarn install
+```
 
-### 3. 圖片管理
-- **大圖**：`assets/images/large/` (banner 背景)
-- **縮圖**：`assets/images/` (城市卡片)
-- **圖示**：`sample assets/` (角色圖示)
+### 2. 程式碼規範
+- **HTML**: 使用語義化標籤，確保無障礙性
+- **CSS**: 使用 Tailwind CSS 類別，自定義樣式放在 `custom.css`
+- **JavaScript**: 使用 ES6+ 語法，模組化開發
+- **圖片**: 優化圖片大小，使用適當格式 (WebP/PNG/JPG)
 
-### 4. 響應式設計
-- 使用 CSS Grid 和 Flexbox
-- 媒體查詢斷點：768px, 1024px
-- 行動裝置優先設計
-
----
-
-## 📊 數據來源與維護
-
-### 1. 勞動數據 (labor_data/)
-- 首爾勞動市場數據
-- 薪資統計資訊
-- 就業趨勢分析
-
-### 2. 圖片資源
-- 城市景觀照片
-- 角色圖示 (GIF/PNG)
-- Logo 與品牌元素
-
-### 3. 內容更新流程
-1. 更新數據檔案
-2. 修改對應 HTML 頁面
-3. 測試響應式顯示
-4. 部署到伺服器
+### 3. 測試指南
+- **跨瀏覽器測試**: Chrome, Firefox, Safari, Edge
+- **響應式測試**: 桌面、平板、手機
+- **無障礙測試**: 使用螢幕閱讀器測試
 
 ---
 
-## 🔧 故障排除
+## 📝 程式碼註解指南
 
-### 常見問題
-1. **圖片無法顯示**：檢查檔案路徑與權限
-2. **樣式未載入**：確認 CSS 檔案路徑正確
-3. **響應式問題**：檢查媒體查詢設定
-4. **JavaScript 錯誤**：查看瀏覽器開發者工具
+### 1. HTML 檔案註解規範
 
-### 除錯工具
-- 瀏覽器開發者工具
-- 網路標籤檢查檔案載入
-- 控制台查看 JavaScript 錯誤
+#### 頁面結構註解
+```html
+<!-- ========================================
+    PAGE: Dashboard
+    PURPOSE: 城市數據儀表板，顯示新加坡的詳細統計資訊
+    AUTHOR: [開發者姓名]
+    LAST UPDATED: [日期]
+======================================== -->
+
+<!-- 左側導航選單 - 固定式側邊欄 -->
+<nav class="left-menu" id="leftMenu">
+    <!-- Logo 區域 -->
+    <div class="menu-header">
+        <!-- ... -->
+    </div>
+    
+    <!-- 導航項目區域 -->
+    <div class="menu-nav">
+        <!-- ... -->
+    </div>
+</nav>
+
+<!-- 主要內容區域 -->
+<main class="flex-1 flex flex-col px-2 pb-5 gap-8 pl-64 bg-gray-100 min-h-screen mx-auto">
+    <!-- 城市檔案標題區塊 -->
+    <section class="city-profile-header mb-8" data-city="singapore">
+        <!-- ... -->
+    </section>
+    
+    <!-- 數據卡片網格佈局 -->
+    <div class="grid grid-cols-3 gap-6 mb-6 w-full">
+        <!-- ... -->
+    </div>
+</main>
+```
+
+#### 功能區塊註解
+```html
+<!-- 雷達圖視覺化區域 -->
+<div class="col-span-2 dashboard-card flex items-center justify-center">
+    <!-- SVG 雷達圖 - 顯示城市各項指標評分 -->
+    <svg viewBox="-60 -40 560 480" class="radar-svg w-full h-full">
+        <!-- 漸層背景定義 -->
+        <defs>
+            <radialGradient id="radarBackground" cx="50%" cy="50%" r="50%">
+                <!-- ... -->
+            </radialGradient>
+        </defs>
+        
+        <!-- 背景圓圈 -->
+        <circle cx="200" cy="200" r="190" fill="url(#radarBackground)" />
+        
+        <!-- 網格線 - 5個同心圓 + 6條放射線 -->
+        <g class="radar-grid">
+            <!-- ... -->
+        </g>
+        
+        <!-- 數據區域 - 多邊形填充 -->
+        <g class="radar-data">
+            <!-- ... -->
+        </g>
+        
+        <!-- 數據點 - 6個指標點 -->
+        <g class="radar-points">
+            <!-- ... -->
+        </g>
+        
+        <!-- 標籤文字 -->
+        <g class="radar-labels">
+            <!-- ... -->
+        </g>
+    </svg>
+</div>
+```
+
+### 2. CSS 檔案註解規範
+
+#### 樣式區塊註解
+```css
+/* ========================================
+    COMPONENT: Left Menu Navigation
+    PURPOSE: 左側固定導航選單樣式
+    FEATURES: 響應式設計、懸停效果、圖示支援
+======================================== */
+
+.left-menu {
+    /* 固定定位，左側對齊 */
+    position: fixed;
+    left: 0;
+    top: 0;
+    
+    /* 尺寸設定 */
+    width: 240px;
+    height: 100vh;
+    
+    /* 視覺樣式 */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    
+    /* 層級控制 */
+    z-index: 1000;
+}
+
+/* 選單項目樣式 */
+.menu-item {
+    /* 佈局設定 */
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    
+    /* 視覺效果 */
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    /* 懸停效果 */
+    &:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+        transform: translateX(5px);
+    }
+}
+
+/* 主要選單項目樣式 */
+.main-menu-item {
+    /* 特殊樣式 */
+    font-weight: 600;
+    font-size: 1.1em;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 10px;
+}
+```
+
+#### 響應式設計註解
+```css
+/* ========================================
+    RESPONSIVE DESIGN: Mobile Breakpoints
+    PURPOSE: 行動裝置適配樣式
+======================================== */
+
+/* 平板裝置 (768px 以下) */
+@media (max-width: 768px) {
+    .left-menu {
+        /* 轉換為頂部導航 */
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    
+    .main-content {
+        /* 調整主要內容區域 */
+        padding-left: 0;
+        margin-top: 60px;
+    }
+}
+
+/* 手機裝置 (480px 以下) */
+@media (max-width: 480px) {
+    .dashboard-card {
+        /* 調整卡片佈局 */
+        margin: 10px 0;
+        padding: 15px;
+    }
+    
+    .radar-svg {
+        /* 縮小雷達圖 */
+        height: 200px;
+    }
+}
+```
+
+### 3. JavaScript 檔案註解規範
+
+#### 函數註解
+```javascript
+/**
+ * 載入城市數據並更新頁面內容
+ * @param {string} cityId - 城市識別碼 (如: 'singapore', 'new-york')
+ * @param {Object} options - 載入選項
+ * @param {boolean} options.showLoading - 是否顯示載入動畫
+ * @param {boolean} options.updateChart - 是否更新圖表
+ * @returns {Promise<Object>} 城市數據物件
+ * @throws {Error} 當 API 請求失敗時拋出錯誤
+ * 
+ * @example
+ * // 基本用法
+ * await loadCityData('singapore');
+ * 
+ * // 進階用法
+ * await loadCityData('new-york', {
+ *     showLoading: true,
+ *     updateChart: false
+ * });
+ */
+async function loadCityData(cityId, options = {}) {
+    const { showLoading = true, updateChart = true } = options;
+    
+    try {
+        // 顯示載入動畫
+        if (showLoading) {
+            showLoadingSpinner();
+        }
+        
+        // 發送 API 請求
+        const response = await fetch(`/api/cities/${cityId}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const cityData = await response.json();
+        
+        // 更新頁面內容
+        updateCityPageContent(cityData);
+        
+        // 更新圖表
+        if (updateChart) {
+            updateRadarChart(cityData.radar_data);
+            updateSalaryChart(cityData.salary_data);
+        }
+        
+        return cityData;
+        
+    } catch (error) {
+        console.error('載入城市數據失敗:', error);
+        showErrorMessage('無法載入城市數據，請稍後再試');
+        throw error;
+        
+    } finally {
+        // 隱藏載入動畫
+        if (showLoading) {
+            hideLoadingSpinner();
+        }
+    }
+}
+
+/**
+ * 更新雷達圖數據
+ * @param {Array} data - 雷達圖數據陣列
+ * @param {string} data[].label - 指標標籤
+ * @param {number} data[].value - 指標數值 (0-10)
+ * @param {string} data[].color - 指標顏色
+ */
+function updateRadarChart(data) {
+    // 驗證輸入數據
+    if (!Array.isArray(data) || data.length === 0) {
+        console.warn('雷達圖數據格式錯誤');
+        return;
+    }
+    
+    // 獲取 SVG 元素
+    const svg = document.querySelector('.radar-svg');
+    if (!svg) {
+        console.error('找不到雷達圖 SVG 元素');
+        return;
+    }
+    
+    // 更新數據點位置
+    data.forEach((item, index) => {
+        const point = svg.querySelector(`.radar-dot:nth-child(${index + 1})`);
+        if (point) {
+            // 計算新位置
+            const angle = (index * 60) * (Math.PI / 180);
+            const radius = item.value * 19; // 19 = 190/10 (最大半徑/最大數值)
+            const x = 200 + radius * Math.cos(angle);
+            const y = 200 + radius * Math.sin(angle);
+            
+            // 更新位置
+            point.setAttribute('cx', x);
+            point.setAttribute('cy', y);
+            
+            // 更新顏色
+            point.setAttribute('fill', item.color);
+        }
+    });
+    
+    // 更新多邊形路徑
+    updateRadarPolygon(data);
+}
+```
+
+#### 事件處理註解
+```javascript
+/**
+ * 頁面載入完成後的初始化函數
+ * 設定事件監聽器、載入初始數據、初始化圖表
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Voyage Compass 頁面初始化開始');
+    
+    // 初始化導航選單
+    initializeNavigation();
+    
+    // 載入當前城市數據
+    const currentCity = getCurrentCityFromURL();
+    if (currentCity) {
+        loadCityData(currentCity);
+    }
+    
+    // 初始化圖表
+    initializeCharts();
+    
+    // 設定響應式事件
+    setupResponsiveEvents();
+    
+    console.log('Voyage Compass 頁面初始化完成');
+});
+
+/**
+ * 初始化導航選單功能
+ * 包含選單切換、響應式行為、當前頁面高亮
+ */
+function initializeNavigation() {
+    const menuToggle = document.getElementById('menuToggle');
+    const leftMenu = document.getElementById('leftMenu');
+    const mainContent = document.getElementById('mainContent');
+    
+    // 選單切換功能
+    if (menuToggle && leftMenu) {
+        menuToggle.addEventListener('click', function() {
+            leftMenu.classList.toggle('menu-collapsed');
+            mainContent.classList.toggle('content-expanded');
+        });
+    }
+    
+    // 高亮當前頁面
+    highlightCurrentPage();
+    
+    // 響應式選單行為
+    setupResponsiveMenu();
+}
+
+/**
+ * 設定響應式事件監聽器
+ * 處理視窗大小變化、觸控事件等
+ */
+function setupResponsiveEvents() {
+    // 視窗大小變化處理
+    window.addEventListener('resize', debounce(function() {
+        handleWindowResize();
+    }, 250));
+    
+    // 觸控事件處理 (行動裝置)
+    if ('ontouchstart' in window) {
+        setupTouchEvents();
+    }
+    
+    // 鍵盤快捷鍵
+    setupKeyboardShortcuts();
+}
+```
+
+### 4. 檔案命名規範
+
+#### HTML 檔案
+- `index.html` - 首頁
+- `dashboard.html` - 數據儀表板
+- `new-character-design.html` - 新角色設計頁面
+- `[城市名稱].html` - 城市頁面 (如: `singapore.html`, `new-york-city.html`)
+- `[角色名稱].html` - 角色頁面 (如: `rocket-dev.html`, `steady-pro.html`)
+
+#### CSS 檔案
+- `main.css` - 主要樣式
+- `custom.css` - 自定義樣式覆蓋
+- `index-custom.css` - 首頁專用樣式
+- `noscript.css` - 無 JavaScript 時的樣式
+
+#### JavaScript 檔案
+- `main.js` - 主要功能
+- `index-custom.js` - 首頁專用功能
+- `util.js` - 工具函數
+
+### 5. 變數命名規範
+
+#### CSS 類別命名
+```css
+/* 使用 BEM 命名法 */
+.dashboard-card {}           /* 區塊 */
+.dashboard-card__title {}    /* 元素 */
+.dashboard-card--featured {} /* 修飾符 */
+
+/* 或使用語義化命名 */
+.left-menu {}               /* 左側選單 */
+.city-profile-header {}     /* 城市檔案標題 */
+.radar-chart {}             /* 雷達圖 */
+```
+
+#### JavaScript 變數命名
+```javascript
+// 使用 camelCase
+const currentCity = 'singapore';
+const cityData = await loadCityData(currentCity);
+const radarChartData = cityData.radar_data;
+
+// 布林值使用 is/has/can 前綴
+const isLoading = false;
+const hasData = true;
+const canUpdate = true;
+
+// 常數使用 UPPER_SNAKE_CASE
+const API_BASE_URL = 'https://api.voyage-compass.com';
+const MAX_RETRY_ATTEMPTS = 3;
+const DEFAULT_CHART_COLORS = ['#0ea5e9', '#14b8a6', '#f59e0b'];
+```
+
+### 6. 錯誤處理註解
+
+```javascript
+/**
+ * 統一的錯誤處理函數
+ * @param {Error} error - 錯誤物件
+ * @param {string} context - 錯誤發生的上下文
+ * @param {Object} options - 錯誤處理選項
+ */
+function handleError(error, context = 'Unknown', options = {}) {
+    const { showUserMessage = true, logToConsole = true } = options;
+    
+    // 記錄錯誤到控制台
+    if (logToConsole) {
+        console.error(`[${context}] 錯誤:`, error);
+        console.error('錯誤堆疊:', error.stack);
+    }
+    
+    // 顯示用戶友好的錯誤訊息
+    if (showUserMessage) {
+        const message = getUserFriendlyErrorMessage(error);
+        showErrorMessage(message);
+    }
+    
+    // 發送錯誤報告到分析服務 (可選)
+    if (window.analytics) {
+        window.analytics.track('Error', {
+            context: context,
+            message: error.message,
+            stack: error.stack
+        });
+    }
+}
+
+/**
+ * 將技術錯誤轉換為用戶友好的訊息
+ * @param {Error} error - 原始錯誤
+ * @returns {string} 用戶友好的錯誤訊息
+ */
+function getUserFriendlyErrorMessage(error) {
+    const errorMessages = {
+        'NetworkError': '網路連線失敗，請檢查您的網路連線',
+        'TimeoutError': '請求超時，請稍後再試',
+        'NotFoundError': '找不到請求的資料',
+        'default': '發生未知錯誤，請重新整理頁面'
+    };
+    
+    return errorMessages[error.name] || errorMessages.default;
+}
+```
+
+---
+
+## 🔧 維護指南
+
+### 1. 定期維護任務
+- **圖片優化**: 定期壓縮和轉換圖片格式
+- **程式碼清理**: 移除未使用的 CSS 和 JavaScript
+- **依賴更新**: 定期更新第三方庫
+- **效能監控**: 監控頁面載入速度和用戶體驗
+
+### 2. 常見問題解決
+- **跨瀏覽器相容性**: 使用 polyfill 和 fallback
+- **響應式問題**: 測試不同裝置和螢幕尺寸
+- **效能問題**: 使用圖片懶載入和程式碼分割
+
+### 3. 擴展建議
+- **PWA 支援**: 添加 Service Worker 和離線功能
+- **國際化**: 支援多語言
+- **深色模式**: 添加主題切換功能
+- **動畫效果**: 使用 CSS 動畫提升用戶體驗
 
 ---
 
 ## 📞 聯絡資訊
 
-如有技術問題或需要進一步協助，請聯繫開發團隊。
+- **專案負責人**: [姓名]
+- **技術支援**: [Email]
+- **GitHub**: https://github.com/Lathari421/voyage-compass
+- **文件更新**: [日期]
 
 ---
 
-*最後更新：2024年7月8日* 
+*最後更新: 2024年12月* 
