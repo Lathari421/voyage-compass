@@ -80,36 +80,6 @@ function initializeButtonEffects() {
         button.addEventListener('click', function(e) {
             // 創建漣漪效果
             createRippleEffect(e, this);
-            
-            // 添加點擊動畫
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
-        });
-        
-        // 添加滑鼠進入效果
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
-            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
-        });
-        
-        // 添加滑鼠離開效果
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-            this.style.boxShadow = '';
-        });
-        
-        // 添加按下效果
-        button.addEventListener('mousedown', function() {
-            this.style.transform = 'translateY(-1px) scale(0.98)';
-            this.style.boxShadow = '0 5px 10px rgba(0, 0, 0, 0.2)';
-        });
-        
-        // 添加釋放效果
-        button.addEventListener('mouseup', function() {
-            this.style.transform = 'translateY(-3px)';
-            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
         });
     });
 }
