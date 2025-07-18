@@ -240,16 +240,48 @@ function initializeFunnelScatterChart() {
     
     const funnelData = cityData.filter(c => c.unicorns > 0);
     
+    // 為每個城市分配不同的顏色
+    const cityColors = {
+        '舊金山': '#FF6B6B',      // 紅色
+        '紐約市': '#4ECDC4',      // 青色
+        '倫敦': '#45B7D1',        // 藍色
+        '首爾': '#96CEB4',        // 綠色
+        '新加坡': '#FFEAA7',      // 黃色
+        '東京': '#DDA0DD',        // 紫色
+        '雪梨': '#FFB347',        // 橙色
+        '香港': '#98D8C8',        // 薄荷綠
+        '溫哥華': '#F7DC6F',      // 金黃色
+        '臺北': '#BB8FCE',        // 淡紫色
+        '曼谷': '#85C1E9'         // 天藍色
+    };
+    
+    // 計算基於 VC 總額的點大小 (8-20 範圍)
+    const maxVC = Math.max(...funnelData.map(c => c.vc_adj));
+    const minVC = Math.min(...funnelData.map(c => c.vc_adj));
+    
     new Chart(ctx.getContext('2d'), {
         type: 'scatter',
         data: {
             datasets: [{
                 label: '創新生態系統',
-                data: funnelData.map(c => ({ x: c.startups, y: c.unicorns, label: c.city })),
-                backgroundColor: colors.blue + 'BF',
-                borderColor: colors.blue,
-                pointRadius: 6,
-                pointHoverRadius: 8
+                data: funnelData.map(c => ({ 
+                    x: c.startups, 
+                    y: c.unicorns, 
+                    label: c.city,
+                    vc: c.vc_adj
+                })),
+                backgroundColor: funnelData.map(c => cityColors[c.city] + 'CC'), // 添加透明度
+                borderColor: funnelData.map(c => cityColors[c.city]),
+                borderWidth: 2,
+                pointRadius: funnelData.map(c => {
+                    // 基於 VC 總額計算點大小
+                    const normalizedVC = (c.vc_adj - minVC) / (maxVC - minVC);
+                    return 8 + (normalizedVC * 12); // 8-20 範圍
+                }),
+                pointHoverRadius: funnelData.map(c => {
+                    const normalizedVC = (c.vc_adj - minVC) / (maxVC - minVC);
+                    return 10 + (normalizedVC * 15); // 10-25 範圍
+                })
             }]
         },
         options: {
@@ -257,12 +289,45 @@ function initializeFunnelScatterChart() {
             maintainAspectRatio: false,
             plugins: {
                 ...universalPlugins,
-                legend: { display: false },
+                legend: { 
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 20,
+                        generateLabels: function(chart) {
+                            const datasets = chart.data.datasets;
+                            const labels = [];
+                            
+                            funnelData.forEach((city, index) => {
+                                labels.push({
+                                    text: city.city,
+                                    fillStyle: cityColors[city.city],
+                                    strokeStyle: cityColors[city.city],
+                                    lineWidth: 2,
+                                    pointStyle: 'circle',
+                                    hidden: false,
+                                    index: index
+                                });
+                            });
+                            
+                            return labels;
+                        }
+                    }
+                },
                 tooltip: {
                     callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            return item.raw.label;
+                        },
                         label: function(context) {
                             const d = context.raw;
-                            return `${d.label}: (新創: ${d.x}, 獨角獸: ${d.y})`;
+                            return [
+                                `新創公司: ${d.x.toLocaleString()}`,
+                                `獨角獸: ${d.y}`,
+                                `VC總額: ${d.vc}億美元`
+                            ];
                         }
                     }
                 }
