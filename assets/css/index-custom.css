@@ -541,20 +541,23 @@ article #main section.wrapper.style1:first-child .inner {
 .menu-item {
     display: flex;
     align-items: center;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    padding-left: 0.75rem;
 }
 
 .menu-item img {
-    width: 2.2em;
-    height: 2.2em;
-    margin-right: 8px;
-    margin-left: 4px;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.5rem;
+    margin-left: 0;
     vertical-align: middle;
 }
 
 .menu-item .icon {
     margin-right: 0.5rem;
-    margin-left: 0.5rem;
-    width: 14px;
+    margin-left: 0;
+    width: 1.2em;
     display: inline-block;
     color: #94a3b8;
 }
@@ -586,6 +589,8 @@ article #main section.wrapper.style1:first-child .inner {
     margin: 0;
     padding-left: 0.5rem;
     text-align: left;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .main-menu-item .icon {
@@ -1268,5 +1273,27 @@ article #main section.wrapper.style1:first-child .inner {
 }
 
 .menu-item i {
-    margin-left: 4px;
+    margin-right: 0.5rem;
+    margin-left: 0;
+    width: 1.2em;
+    text-align: center;
+    font-size: 1em;
+    vertical-align: middle;
+}
+
+/* 角色項目 icon 顏色 */
+.menu-item i.fa-rocket {
+    color: #3b82f6;
+}
+
+.menu-item i.fa-shield-alt {
+    color: #10b981;
+}
+
+.menu-item i.fa-laptop {
+    color: #f59e0b;
+}
+
+.menu-item i.fa-lightbulb {
+    color: #8b5cf6;
 }

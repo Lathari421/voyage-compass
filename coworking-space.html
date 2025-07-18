@@ -1,0 +1,611 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球共享辦公空間策略洞察</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="assets/css/index-custom.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Force KPI number colors after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const kpiRed = document.querySelector('.kpi-number-red');
+            const kpiGreen = document.querySelector('.kpi-number-green');
+            
+            if (kpiRed) {
+                kpiRed.style.setProperty('color', '#EF476F', 'important');
+            }
+            
+            if (kpiGreen) {
+                kpiGreen.style.setProperty('color', '#06D6A0', 'important');
+            }
+        });
+    </script>
+    <style>
+        /* Main Content Adjustment */
+        .main-content {
+            margin-left: 208px;
+            min-height: 100vh;
+            position: relative;
+            top: 0;
+        }
+
+        /* Page Content Styles */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8f9fa;
+            color: #073B4C;
+        }
+
+        /* KPI Number Colors - Override all other styles */
+        .text-\[#EF476F\] {
+            color: #EF476F !important;
+        }
+        
+        .text-\[#06D6A0\] {
+            color: #06D6A0 !important;
+        }
+
+        /* Override any inherited colors for KPI numbers */
+        p[style*="color: #EF476F"] {
+            color: #EF476F !important;
+        }
+        
+        p[style*="color: #06D6A0"] {
+            color: #06D6A0 !important;
+        }
+
+        /* Force color inheritance override */
+        .kpi-number-red {
+            color: #EF476F !important;
+        }
+        
+        .kpi-number-green {
+            color: #06D6A0 !important;
+        }
+
+        /* Additional specificity for KPI numbers */
+        .kpi-card .kpi-number-red,
+        .kpi-card p.kpi-number-red {
+            color: #EF476F !important;
+        }
+        
+        .kpi-card .kpi-number-green,
+        .kpi-card p.kpi-number-green {
+            color: #06D6A0 !important;
+        }
+
+        /* Override any Tailwind or other CSS */
+        .text-5xl.font-bold.kpi-number-red {
+            color: #EF476F !important;
+        }
+        
+        .text-5xl.font-bold.kpi-number-green {
+            color: #06D6A0 !important;
+        }
+
+        /* Override custom.css p rule specifically */
+        .kpi-card p.kpi-number-red,
+        .kpi-card .text-5xl.font-bold.kpi-number-red {
+            color: #EF476F !important;
+        }
+        
+        .kpi-card p.kpi-number-green,
+        .kpi-card .text-5xl.font-bold.kpi-number-green {
+            color: #06D6A0 !important;
+        }
+
+        /* Maximum specificity override */
+        .kpi-card .text-5xl.font-bold.kpi-number-red[style*="color: #EF476F"] {
+            color: #EF476F !important;
+        }
+        
+        .kpi-card .text-5xl.font-bold.kpi-number-green[style*="color: #06D6A0"] {
+            color: #06D6A0 !important;
+        }
+
+        /* Nuclear option - override everything */
+        .kpi-card p.text-5xl.font-bold.kpi-number-red {
+            color: #EF476F !important;
+        }
+        
+        .kpi-card p.text-5xl.font-bold.kpi-number-green {
+            color: #06D6A0 !important;
+        }
+
+        /* Even more specific */
+        .main-content .kpi-card p.text-5xl.font-bold.kpi-number-red {
+            color: #EF476F !important;
+        }
+        
+        .main-content .kpi-card p.text-5xl.font-bold.kpi-number-green {
+            color: #06D6A0 !important;
+        }
+
+        /* Override main.css table th color */
+        .main-content table th {
+            color: #000000 !important;
+        }
+
+        /* More specific table header override */
+        .main-content .overflow-x-auto table thead th {
+            color: #000000 !important;
+        }
+
+        /* Maximum specificity for table headers */
+        .main-content .overflow-x-auto table thead.text-xs.text-black.uppercase.bg-gray-50 th {
+            color: #000000 !important;
+        }
+
+        /* Disable all hover effects for cards */
+        .main-content .card:hover {
+            transform: none !important;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+        }
+
+        /* Override any external hover effects */
+        .main-content .card:hover::before {
+            transform: none !important;
+        }
+
+        /* Disable transitions for cards */
+        .main-content .card {
+            transition: none !important;
+        }
+
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 400px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .radar-chart-container {
+            position: relative;
+            margin: auto;
+            height: 400px;
+            width: 100%;
+            max-width: 500px;
+            min-height: 350px;
+        }
+        .kpi-card {
+            background: #ffffff;
+            border-left: 5px solid #118AB2;
+        }
+        .section-title {
+            color: #073B4C;
+            border-bottom: 3px solid #FFD166;
+            padding-bottom: 0.5rem;
+            display: block;
+            text-align: center;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .flowchart-step {
+            border: 2px solid #118AB2;
+            background-color: #ffffff;
+            color: #073B4C;
+            width: 100%;
+        }
+        .flowchart-arrow {
+            color: #FFD166;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .left-menu {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .left-menu.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="landing is-preload">
+
+    <!-- Left Menu -->
+    <nav class="left-menu" id="leftMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="menu-logo-circle">
+                    <img src="sample assets/Voyage Compass Logo.png" alt="Voyage Compass Logo" />
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-nav">
+            <div class="menu-section">
+                <a href="index.html" class="menu-item main-menu-item">
+                    首頁
+                </a>
+                <a href="index.html#gallery" class="menu-item main-menu-item">
+                    城市探索
+                </a>
+                <a href="bangkok.html" class="menu-item">
+                    <img src="sample assets/bkk_icon_1.png" alt="Bangkok">曼谷 Bangkok
+                </a>
+                <a href="hong-kong.html" class="menu-item">
+                    <img src="sample assets/hkg_icon_1.png" alt="Hong Kong">香港 Hong Kong
+                </a>
+                <a href="london.html" class="menu-item">
+                    <img src="sample assets/lon_icon_1.png" alt="London">倫敦 London
+                </a>
+                <a href="new-york-city.html" class="menu-item">
+                    <img src="sample assets/nyc_icon_1.png" alt="New York City">紐約 New York City
+                </a>
+                <a href="san-francisco.html" class="menu-item">
+                    <img src="sample assets/sfo_icon_1.png" alt="San Francisco">舊金山 San Francisco
+                </a>
+                <a href="seoul.html" class="menu-item">
+                    <img src="sample assets/sel_icon_1.png" alt="Seoul">首爾 Seoul
+                </a>
+                <a href="singapore.html" class="menu-item">
+                    <img src="sample assets/sgp_icon_1.png" alt="Singapore">新加坡 Singapore
+                </a>
+                <a href="sydney.html" class="menu-item">
+                    <img src="sample assets/syd_icon_1.png" alt="Sydney">雪梨 Sydney
+                </a>
+                <a href="taipei.html" class="menu-item">
+                    <img src="sample assets/tpe_icon_1.png" alt="Taipei">台北 Taipei
+                </a>
+                <a href="tokyo.html" class="menu-item">
+                    <img src="sample assets/tyo_icon_1.png" alt="Tokyo">東京 Tokyo
+                </a>
+                <a href="vancouver.html" class="menu-item">
+                    <img src="sample assets/yvr_icon_1.png" alt="Vancouver">溫哥華 Vancouver
+                </a>
+                <a href="index.html#characters" class="menu-item main-menu-item">
+                    角色情境
+                </a>
+                <a href="rocket-dev.html" class="menu-item">
+                    <i class="fas fa-rocket"></i>職場新人 Rocket Dev
+                </a>
+                <a href="steady-pro.html" class="menu-item">
+                    <i class="fas fa-shield-alt"></i>穩健高薪 Steady Pro
+                </a>
+                <a href="nomad-coder.html" class="menu-item">
+                    <i class="fas fa-laptop"></i>數位遊牧 Nomad Coder
+                </a>
+                <a href="startup-maverick.html" class="menu-item">
+                    <i class="fas fa-lightbulb"></i>創業浪客 Startup Maverick
+                </a>
+                <a href="#" class="menu-item main-menu-item">
+                    指標一覽表
+                </a>
+                <a href="career-velocity-index.html" class="menu-item">
+                    <img src="sample assets/compass.gif" alt="Feature">Career Velocity Index
+                </a>
+                <a href="coworking-space.html" class="menu-item active">
+                    <img src="sample assets/briefcase.png" alt="Feature">Co-working Space Index
+                </a>
+                </a>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <h1 class="text-2xl md:text-3xl font-bold text-center text-[#073B4C]">全球共享辦公生態圈：策略佈局資訊圖表</h1>
+            <p class="text-center text-gray-500 mt-1">為您的全球房地產策略提供數據驅動的洞見</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <section id="introduction" class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 section-title">一個市場，兩種景象：全球格局分化</h2>
+            <p class="text-center text-gray-600 my-6 max-w-3xl mx-auto">全球共享辦公市場正呈現顯著分化。北美和歐洲等成熟市場進入深度校準期，追求高品質與靈活性；而亞太市場則在政策與創新的雙重驅動下，迎來爆發性增長。此一「兩種景象」為跨國企業的房地產策略帶來了全新的挑戰與機遇。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                <div class="kpi-card rounded-lg p-6 flex flex-col justify-center items-center card">
+                    <h3 class="text-lg font-semibold mb-2">北美：郊區市場崛起</h3>
+                    <p class="text-5xl font-bold kpi-number-red" style="color: #EF476F;">58%</p>
+                    <p class="mt-2 text-gray-600 text-sm">2023-2025年郊區總面積預計增長率，反映工作模式的根本性轉變。</p>
+                </div>
+                <div class="kpi-card rounded-lg p-6 flex flex-col justify-center items-center card">
+                     <h3 class="text-lg font-semibold mb-2">亞太地區：高速增長引擎</h3>
+                    <p class="text-5xl font-bold kpi-number-green" style="color: #06D6A0;">&gt;21%</p>
+                    <p class="mt-2 text-gray-600 text-sm">預計年複合增長率(CAGR)，由政府支持和初創企業蓬勃發展驅動。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vibrancy-index" class="mb-12">
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-2 section-title">城市可及性與活力指數</h2>
+                 <p class="text-center text-gray-500 my-6">此指數綜合評估市場成熟度(30%)、成本(30%)、供應商多樣性(20%)及趨勢(20%)，提供一個全面的市場吸引力評分。下表為詳細數據，雷達圖則展示了不同城市類型的獨特優勢。</p>
+                
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full text-sm text-left text-gray-500 border border-gray-200">
+                        <thead class="text-xs text-black uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-4 py-3">Rank</th>
+                                <th scope="col" class="px-4 py-3">City</th>
+                                <th scope="col" class="px-4 py-3 text-center">Maturity</th>
+                                <th scope="col" class="px-4 py-3 text-center">Cost</th>
+                                <th scope="col" class="px-4 py-3 text-center">Diversity</th>
+                                <th scope="col" class="px-4 py-3 text-center">Trend</th>
+                                <th scope="col" class="px-4 py-3 text-center">Index Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium">1</td><td class="px-4 py-2 font-medium text-gray-900">Bangkok</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center font-bold text-[#06D6A0]">4.7</td></tr>
+                            <tr class="bg-gray-50 border-b"><td class="px-4 py-2 font-medium">2</td><td class="px-4 py-2 font-medium text-gray-900">Seoul</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center font-bold text-[#06D6A0]">4.5</td></tr>
+                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium">3</td><td class="px-4 py-2 font-medium text-gray-900">London</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">3</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center font-bold text-[#118AB2]">4.4</td></tr>
+                            <tr class="bg-gray-50 border-b"><td class="px-4 py-2 font-medium">4</td><td class="px-4 py-2 font-medium text-gray-900">San Francisco</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">3</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center font-bold text-[#118AB2]">4.4</td></tr>
+                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium">5</td><td class="px-4 py-2 font-medium text-gray-900">Taipei</td><td class="px-4 py-2 text-center">3</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center font-bold text-[#FFD166]">4.0</td></tr>
+                            <tr class="bg-gray-50 border-b"><td class="px-4 py-2 font-medium">6</td><td class="px-4 py-2 font-medium text-gray-900">Vancouver</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">3</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center font-bold text-gray-700">3.9</td></tr>
+                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium">7</td><td class="px-4 py-2 font-medium text-gray-900">New York City</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">2</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center font-bold text-gray-700">3.4</td></tr>
+                             <tr class="bg-gray-50 border-b"><td class="px-4 py-2 font-medium">8</td><td class="px-4 py-2 font-medium text-gray-900">Sydney</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">1</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">3</td><td class="px-4 py-2 text-center font-bold text-[#EF476F]">3.4</td></tr>
+                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium">9</td><td class="px-4 py-2 font-medium text-gray-900">Singapore</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">1</td><td class="px-4 py-2 text-center">5</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center font-bold text-[#EF476F]">3.3</td></tr>
+                            <tr class="bg-gray-50 border-b"><td class="px-4 py-2 font-medium">10</td><td class="px-4 py-2 font-medium text-gray-900">Tokyo</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">1</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center font-bold text-[#EF476F]">3.1</td></tr>
+                            <tr class="bg-white"><td class="px-4 py-2 font-medium">11</td><td class="px-4 py-2 font-medium text-gray-900">Hong Kong</td><td class="px-4 py-2 text-center">3</td><td class="px-4 py-2 text-center">2</td><td class="px-4 py-2 text-center">4</td><td class="px-4 py-2 text-center">3</td><td class="px-4 py-2 text-center font-bold text-gray-700">2.9</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="radar-chart-container">
+                        <canvas id="vibrancyIndexChart"></canvas>
+                    </div>
+                    <div id="index-takeaways" class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-lg text-[#06D6A0]">📈 頂尖表現者 (曼谷, 首爾)</h4>
+                            <p class="text-sm text-gray-600">高增長與卓越成本效益的完美結合。在「成本競爭力」和「市場趨勢」上得分極高，非常適合對成本敏感、需快速擴張的團隊。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#118AB2]">👑 成熟領導者 (倫敦)</h4>
+                            <p class="text-sm text-gray-600">雖然昂貴，但提供無與倫比的市場深度和品質。在「市場成熟度」和「供應商多樣性」上領先，適合將品牌形象和人才吸引力置於首位的企業。</p>
+                        </div>
+                         <div>
+                            <h4 class="font-bold text-lg text-[#FFD166]">💡 高潛力價值 (台北)</h4>
+                            <p class="text-sm text-gray-600">作為新興科技中心，在各維度之間取得了良好平衡。對於尋求增長潛力與合理成本組合的科技公司而言，是極具吸引力的選擇。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#EF476F]">💰 高成本樞紐 (雪梨)</h4>
+                            <p class="text-sm text-gray-600">市場成熟但成本極高。其雷達圖形狀顯示「成本競爭力」是明顯短板。進入這些市場必須基於策略必要性，而非營運效率。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cost-comparison" class="mb-12">
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-2 section-title">全球成本格局：各城市定價基準比較</h2>
+                <p class="text-center text-gray-500 my-6">了解全球主要城市的專屬辦公桌平均月費（美元），有助於快速評估預算分配與市場進入成本。</p>
+                <div class="chart-container">
+                    <canvas id="costComparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="playbook" class="mb-12">
+            <h2 class="text-2xl font-bold mb-2 section-title">策略手冊：打造現代化工作空間組合</h2>
+             <p class="text-center text-gray-500 my-6 max-w-3xl mx-auto">超越單一總部思維，採納由多種空間組成的投資組合策略，以優化成本、提升員工體驗並保持組織靈活性。</p>
+            
+            <div class="card p-8 mb-8">
+                <h3 class="text-xl font-bold mb-6 text-center">三層式辦公空間模型 (Hub-Spoke-OnDemand)</h3>
+                 <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="text-center flowchart-step p-4 rounded-lg md:w-60">
+                        <p class="text-3xl mb-2">🏢</p>
+                        <h4 class="font-bold">第一層: Hub</h4>
+                        <p class="text-xs">位於市中心的高品質彈性辦公室，用於團隊協作與文化建立。</p>
+                    </div>
+                    <div class="text-4xl flowchart-arrow transform rotate-90 md:rotate-0">&rarr;</div>
+                    <div class="text-center flowchart-step p-4 rounded-lg md:w-60">
+                         <p class="text-3xl mb-2">🏘️</p>
+                        <h4 class="font-bold">第二層: Spoke</h4>
+                        <p class="text-xs">位於郊區的共享辦公網絡，方便員工就近進行專注型工作。</p>
+                    </div>
+                     <div class="text-4xl flowchart-arrow transform rotate-90 md:rotate-0">&rarr;</div>
+                     <div class="text-center flowchart-step p-4 rounded-lg md:w-60">
+                         <p class="text-3xl mb-2">✈️</p>
+                        <h4 class="font-bold">第三層: On-Demand</h4>
+                        <p class="text-xs">採用按需付費模式，滿足差旅和專案工作的極致靈活性需求。</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold mb-6 text-center">根據團隊需求匹配供應商類型</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                 <div class="card p-6 text-center">
+                    <p class="text-4xl mb-3">🌍</p>
+                    <h4 class="font-bold text-lg mb-2">全球巨頭</h4>
+                    <p class="text-xs text-gray-500 mb-2">(如 WeWork, IWG)</p>
+                    <p class="text-sm text-gray-600">適合尋求規模化、全球通行和標準化體驗的大型企業。</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <p class="text-4xl mb-3">💎</p>
+                    <h4 class="font-bold text-lg mb-2">高端精品</h4>
+                    <p class="text-xs text-gray-500 mb-2">(如 CANOPY, Uncommon)</p>
+                    <p class="text-sm text-gray-600">專注吸引頂尖人才，創造「目的地工作場所」，提升品牌形象。</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <p class="text-4xl mb-3">🏆</p>
+                    <h4 class="font-bold text-lg mb-2">本土冠軍</h4>
+                    <p class="text-xs text-gray-500 mb-2">(如 Fastfive, The Network Hub)</p>
+                    <p class="text-sm text-gray-600">提供符合當地文化需求的服務，深度融入本地市場生態。</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <p class="text-4xl mb-3">💰</p>
+                    <h4 class="font-bold text-lg mb-2">經濟/利基型</h4>
+                    <p class="text-xs text-gray-500 mb-2">(如 The Farm SoHo)</p>
+                    <p class="text-sm text-gray-600">為初創公司和自由職業者提供高性價比的實用空間。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#073B4C] text-white mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-sm">
+            <p>&copy; 2025 全球工作場所策略洞察. All Rights Reserved.</p>
+            <p class="text-xs text-gray-400 mt-1">本資訊圖表基於對全球11個城市共享辦公生態系統的策略性分析報告及活力指數。最後更新時間：2025年7月18日。</p>
+        </div>
+    </footer>
+
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const palette = {
+        red: '#EF476F',
+        yellow: '#FFD166',
+        green: '#06D6A0',
+        blue: '#118AB2',
+        darkBlue: '#073B4C',
+    };
+
+    const globalTooltipConfig = {
+        plugins: {
+            tooltip: {
+                enabled: false
+            }
+        }
+    };
+
+    function wrapLabel(str, maxWidth) {
+        if (str.length <= maxWidth) return str;
+        const words = str.split(' ');
+        let lines = [];
+        let currentLine = words[0];
+        for (let i = 1; i < words.length; i++) {
+            if ((currentLine + " " + words[i]).length > maxWidth) {
+                lines.push(currentLine);
+                currentLine = words[i];
+            } else {
+                currentLine += " " + words[i];
+            }
+        }
+        lines.push(currentLine);
+        return lines;
+    }
+    
+    const costData = [
+        { city: '東京', price: 792 },
+        { city: '雪梨', price: 660 },
+        { city: '新加坡', price: 590 },
+        { city: '紐約', price: 510 },
+        { city: '舊金山', price: 415 },
+        { city: '溫哥華', price: 405 },
+        { city: '倫敦', price: 375 },
+        { city: '台北', price: 315 },
+        { city: '曼谷', price: 220 },
+        { city: '首爾', price: 180 },
+    ].sort((a, b) => b.price - a.price);
+
+    const costCtx = document.getElementById('costComparisonChart').getContext('2d');
+    new Chart(costCtx, {
+        type: 'bar',
+        data: {
+            labels: costData.map(d => wrapLabel(d.city, 16)),
+            datasets: [{
+                label: '專屬辦公桌平均月費 (USD)',
+                data: costData.map(d => d.price),
+                backgroundColor: costData.map(d => d.price > 500 ? palette.red : (d.price > 350 ? palette.yellow : palette.green)),
+                borderRadius: 4,
+                borderWidth: 2,
+                borderColor: '#ffffff'
+            }]
+        },
+        options: {
+            ...globalTooltipConfig,
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { 
+                    beginAtZero: true, 
+                    title: { display: true, text: '平均月費 (USD)', color: palette.darkBlue },
+                    ticks: { color: palette.darkBlue }
+                },
+                y: { ticks: { color: palette.darkBlue } }
+            },
+            plugins: {
+                ...globalTooltipConfig.plugins,
+                legend: { display: false },
+                title: { display: false }
+            }
+        }
+    });
+
+    const indexData = [
+        { city: '曼谷', values: [4, 5, 5, 5], color: palette.green },
+        { city: '倫敦', values: [5, 3, 5, 5], color: palette.blue },
+        { city: '台北', values: [3, 4, 5, 4], color: palette.yellow },
+        { city: '雪梨', values: [5, 1, 5, 3], color: palette.red },
+    ];
+
+    const vibrancyCtx = document.getElementById('vibrancyIndexChart').getContext('2d');
+    new Chart(vibrancyCtx, {
+        type: 'radar',
+        data: {
+            labels: ['市場成熟度', '成本競爭力', '供應商多樣性', '市場趨勢'],
+            datasets: indexData.map(d => ({
+                label: d.city,
+                data: d.values,
+                fill: true,
+                backgroundColor: d.color + '40',
+                borderColor: d.color,
+                pointBackgroundColor: d.color,
+                pointBorderColor: '#fff'
+            }))
+        },
+        options: {
+            ...globalTooltipConfig,
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                    grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                    pointLabels: { 
+                        font: { size: 12 },
+                        color: palette.darkBlue
+                    },
+                    ticks: {
+                        backdropColor: 'rgba(255, 255, 255, 0.75)',
+                        stepSize: 1,
+                        color: palette.darkBlue,
+                        font: { size: 10 }
+                    },
+                    min: 0,
+                    max: 5
+                }
+            },
+            plugins: {
+                ...globalTooltipConfig.plugins,
+                legend: {
+                    position: 'top',
+                    labels: { color: palette.darkBlue }
+                }
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>
