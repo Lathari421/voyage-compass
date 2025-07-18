@@ -624,13 +624,14 @@ article #main section.wrapper.style1:first-child .inner {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     overflow: hidden;
     margin: 0;
     padding: 0;
     top: 0;
+    /* 移除可能與 JavaScript 衝突的背景屬性 */
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* background-attachment: fixed; */
 }
 
 .hero-section::before {
