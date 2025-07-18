@@ -1,0 +1,531 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025全球創新樞紐：生態系統績效與戰略原型比較分析</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="assets/css/index-custom.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Main Content Adjustment */
+        .main-content {
+            margin-left: 208px;
+            min-height: 100vh;
+            position: relative;
+            top: 0;
+        }
+
+        /* Page Content Styles */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+            color: #073B4C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .kpi-value {
+            font-weight: 900;
+            color: #4A90E2;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .left-menu {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .left-menu.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="landing is-preload">
+
+    <!-- Left Menu -->
+    <nav class="left-menu" id="leftMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="menu-logo-circle">
+                    <img src="sample assets/Voyage Compass Logo.png" alt="Voyage Compass Logo" />
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-nav">
+            <div class="menu-section">
+                <a href="index.html" class="menu-item main-menu-item">
+                    首頁
+                </a>
+                <a href="index.html#gallery" class="menu-item main-menu-item">
+                    城市探索
+                </a>
+                <a href="bangkok.html" class="menu-item">
+                    <img src="sample assets/bkk_icon_1.png" alt="Bangkok">曼谷 Bangkok
+                </a>
+                <a href="hong-kong.html" class="menu-item">
+                    <img src="sample assets/hkg_icon_1.png" alt="Hong Kong">香港 Hong Kong
+                </a>
+                <a href="london.html" class="menu-item">
+                    <img src="sample assets/lon_icon_1.png" alt="London">倫敦 London
+                </a>
+                <a href="new-york-city.html" class="menu-item">
+                    <img src="sample assets/nyc_icon_1.png" alt="New York City">紐約 New York City
+                </a>
+                <a href="san-francisco.html" class="menu-item">
+                    <img src="sample assets/sfo_icon_1.png" alt="San Francisco">舊金山 San Francisco
+                </a>
+                <a href="seoul.html" class="menu-item">
+                    <img src="sample assets/sel_icon_1.png" alt="Seoul">首爾 Seoul
+                </a>
+                <a href="singapore.html" class="menu-item">
+                    <img src="sample assets/sgp_icon_1.png" alt="Singapore">新加坡 Singapore
+                </a>
+                <a href="sydney.html" class="menu-item">
+                    <img src="sample assets/syd_icon_1.png" alt="Sydney">雪梨 Sydney
+                </a>
+                <a href="taipei.html" class="menu-item">
+                    <img src="sample assets/tpe_icon_1.png" alt="Taipei">台北 Taipei
+                </a>
+                <a href="tokyo.html" class="menu-item">
+                    <img src="sample assets/tyo_icon_1.png" alt="Tokyo">東京 Tokyo
+                </a>
+                <a href="vancouver.html" class="menu-item">
+                    <img src="sample assets/yvr_icon_1.png" alt="Vancouver">溫哥華 Vancouver
+                </a>
+                <a href="index.html#characters" class="menu-item main-menu-item">
+                    角色情境
+                </a>
+                <a href="rocket-dev.html" class="menu-item">
+                    <i class="fas fa-rocket"></i>職場新人 Rocket Dev
+                </a>
+                <a href="steady-pro.html" class="menu-item">
+                    <i class="fas fa-shield-alt"></i>穩健高薪 Steady Pro
+                </a>
+                <a href="nomad-coder.html" class="menu-item">
+                    <i class="fas fa-laptop"></i>數位遊牧 Nomad Coder
+                </a>
+                <a href="startup-maverick.html" class="menu-item">
+                    <i class="fas fa-lightbulb"></i>創業浪客 Startup Maverick
+                </a>
+                <a href="#" class="menu-item main-menu-item">
+                    指標一覽表
+                </a>
+                <a href="career-velocity-index.html" class="menu-item">
+                    <img src="sample assets/advancement.png" alt="Feature">Career Velocity Index
+                </a>
+                <a href="coworking-space.html" class="menu-item">
+                    <img src="sample assets/briefcase.png" alt="Feature">Co-working Space Index
+                </a>
+                <a href="global-tech-env.html" class="menu-item active">
+                    <img src="sample assets/advancement.png" alt="Feature">Global Tech Environment
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-[#4A90E2]">2025年全球創新樞紐分析</h1>
+            <p class="mt-2 text-lg text-gray-600">生態系統績效與戰略原型深度比較</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4 md:p-8">
+        
+        <section class="mb-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">全球新創生態系統矩陣</h2>
+                <p class="mt-2 text-md text-gray-500">本分析整合五項核心指標，全面剖析全球十一個關鍵創新生態系統的績效與其背後的戰略定位。</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-3 md:p-6 overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-600">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th scope="col" class="py-3 px-4">城市</th>
+                            <th scope="col" class="py-3 px-4">GSER 排名</th>
+                            <th scope="col" class="py-3 px-4">StartupBlink 排名</th>
+                            <th scope="col" class="py-3 px-4">VC總額 (億美元)</th>
+                            <th scope="col" class="py-3 px-4">獨角獸數量</th>
+                            <th scope="col" class="py-3 px-4">新創數量</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body">
+                    </tbody>
+                </table>
+                 <p class="text-xs text-gray-400 mt-3 px-4">* 紐約與曼谷的VC總額採用經校正後的市場共識估算值（400億與25億美元）進行後續分析。</p>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">頂級梯隊的實力展現</h2>
+                <p class="mt-2 text-md text-gray-500">舊金山、紐約與倫敦憑藉其成熟的生態系統，在資本與創新產出上持續引領全球。</p>
+            </div>
+            <div class="card">
+                <h3 class="card-title mb-4">頂級樞紐實力氣泡圖</h3>
+                <p class="text-sm text-gray-500 text-center mb-4">此氣泡圖展示了三大頂級樞紐的多維度實力。X軸代表VC總額，Y軸代表獨角獸數量，氣泡大小則反映新創公司總數。舊金山在各方面均處於領先地位。</p>
+                <div class="chart-container">
+                    <canvas id="topTierBubbleChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">全球創新樞紐原型</h2>
+                <p class="mt-2 text-md text-gray-500">每個城市都展現出獨特的生態系統原型，這些原型揭示了它們的戰略優勢與發展路徑。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card lg:col-span-2">
+                    <h3 class="card-title">均衡領導者：指標比較</h3>
+                    <p class="text-sm text-gray-500 text-center mb-4">此分組長條圖取代了雷達圖，更清晰地比較舊金山和倫敦在五項關鍵指標上的表現。兩者均表現強勁，但在資本規模上存在顯著差異。</p>
+                    <div class="chart-container h-96">
+                        <canvas id="balancedLeadersBarChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">資本超級聚合器</h3>
+                    <div class="flex flex-col justify-center items-center h-full">
+                        <p class="font-semibold text-xl text-center mb-2">紐約市</p>
+                        <p class="text-sm text-gray-500 text-center mb-4">核心特徵是無與倫比的資本規模及其與全球金融體系的深度融合。</p>
+                        <div class="text-center my-6">
+                             <p class="text-gray-500">經校正VC總額</p>
+                            <p class="kpi-value text-6xl">$400億</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">企業主導潛力股</h3>
+                    <p class="text-sm text-gray-500 text-center mb-4">首爾與東京的創新生態深受大型企業影響，擁有巨大技術潛力，但創業活力相對受限。</p>
+                     <div class="chart-container h-64 max-h-[30vh] mt-4">
+                        <canvas id="corporatePotentialChart"></canvas>
+                    </div>
+                </div>
+                 <div class="card lg:col-span-2">
+                    <h3 class="card-title">深度科技沙盒 vs. 新興市場火車頭</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full mt-4 items-center">
+                        <div class="text-center md:border-r border-gray-200 md:pr-4">
+                            <p class="font-semibold text-xl mb-2">臺北</p>
+                            <p class="text-sm text-gray-600">在半導體和硬體工程擁有世界級實力，但將技術商業化並規模化為全球企業的能力有限。</p>
+                        </div>
+                        <div class="text-center">
+                             <p class="font-semibold text-xl mb-2">曼谷</p>
+                             <p class="text-sm text-gray-600">由強勁的國內市場增長驅動，資本集中追逐少數潛在的市場領導者，展現高增長模式。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">資本效率與績效洞察</h2>
+                <p class="mt-2 text-md text-gray-500">透過比率分析，我們能揭示不同生態系統在資本運用和價值創造上的深層結構性差異。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="card-title">獨角獸資本效率 (每家獨角獸所需VC額)</h3>
+                    <p class="text-sm text-gray-500 text-center mb-4">此長條圖排列出各城市催生一家獨角獸所需的資本。倫敦、首爾和香港展現了極高的資本效率。</p>
+                    <div class="chart-container">
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">生態系統漏斗效率 (散點圖)</h3>
+                    <p class="text-sm text-gray-500 text-center mb-4">此散點圖展示了新創公司總數（X軸）與獨角獸數量（Y軸）的關係。越靠近左上角的城市，其轉化效率越高。舊金山和紐約明顯處於領先群體。</p>
+                    <div class="chart-container">
+                        <canvas id="funnelScatterChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">2025-2030 戰略展望</h2>
+                <p class="mt-2 text-md text-gray-500">三大趨勢正在重塑全球創新格局，為不同類型的樞紐帶來挑戰與機遇。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="card">
+                    <div class="text-4xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">AI 霸權之爭</h3>
+                    <p class="text-gray-600">擁有頂尖AI人才、成熟資本市場及底層硬體優勢的樞紐（如舊金山、倫敦、臺北）將在這場競賽中佔據主導地位。</p>
+                </div>
+                <div class="card">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">地緣政治因素</h3>
+                    <p class="text-gray-600">持續的科技競爭正在重塑全球創新流動，為被視為「中立」的樞紐（如新加坡）創造機會。</p>
+                </div>
+                <div class="card">
+                    <div class="text-4xl mb-4">💻</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">遠程工作革命</h3>
+                    <p class="text-gray-600">此趨勢為「生活方式超級樞紐」（如溫哥華、雪梨）帶來歷史性機遇，吸引尋求工作與生活平衡的精英人才。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+<script>
+    const cityData = [
+        { city: "舊金山", gser: 1, blink: 1, vc: 607, unicorns: 268, startups: 15030, vc_adj: 607 },
+        { city: "紐約市", gser: 2, blink: 2, vc: 1795, unicorns: 150, startups: 8750, vc_adj: 400 },
+        { city: "倫敦", gser: 3, blink: 3, vc: 108, unicorns: 103, startups: 7567, vc_adj: 108 },
+        { city: "首爾", gser: 8, blink: 20, vc: 16.5, unicorns: 32, startups: 9567, vc_adj: 16.5 },
+        { city: "新加坡", gser: 9, blink: 12, vc: 86, unicorns: 34, startups: 4600, vc_adj: 86 },
+        { city: "東京", gser: 11, blink: 13, vc: 130, unicorns: 12, startups: 3000, vc_adj: 130 },
+        { city: "雪梨", gser: 25, blink: 21, vc: 50, unicorns: 7, startups: 2500, vc_adj: 50 },
+        { city: "香港", gser: 27, blink: 37, vc: 7, unicorns: 12, startups: 856, vc_adj: 7 },
+        { city: "溫哥華", gser: 36, blink: 39, vc: 22, unicorns: 1, startups: 1500, vc_adj: 22 },
+        { city: "臺北", gser: 100, blink: 54, vc: 63, unicorns: 2, startups: 4694, vc_adj: 63 },
+        { city: "曼谷", gser: 100, blink: 81, vc: 330, unicorns: 5, startups: 1200, vc_adj: 25 },
+    ];
+
+    const tableBody = document.getElementById('data-table-body');
+    cityData.forEach(c => {
+        let row = tableBody.insertRow();
+        row.innerHTML = `
+            <td class="py-3 px-4 font-medium text-gray-900 whitespace-nowrap">${c.city}</td>
+            <td class="py-3 px-4">${c.gser}</td>
+            <td class="py-3 px-4">${c.blink}</td>
+            <td class="py-3 px-4">${c.vc.toLocaleString()}</td>
+            <td class="py-3 px-4">${c.unicorns}</td>
+            <td class="py-3 px-4">${c.startups.toLocaleString()}</td>
+        `;
+    });
+
+    const tooltipTitleCallback = (tooltipItems) => {
+        const item = tooltipItems[0];
+        let label = item.chart.data.labels[item.dataIndex];
+        return Array.isArray(label) ? label.join(' ') : label;
+    };
+    
+    const colors = {
+        blue: '#4A90E2',
+        teal: '#50E3C2',
+        orange: '#F5A623',
+        red: '#D0021B',
+        purple: '#BD10E0'
+    };
+    const colorPalette = [colors.blue, colors.teal, colors.orange, colors.red, colors.purple];
+
+    const universalPlugins = {
+        tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleFont: { size: 14, weight: 'bold', family: 'Noto Sans TC' },
+            bodyFont: { size: 12, family: 'Noto Sans TC' },
+            padding: 10,
+            cornerRadius: 4,
+            callbacks: { title: tooltipTitleCallback }
+        }
+    };
+    
+    const topTierCities = cityData.filter(c => ['舊金山', '紐約市', '倫敦'].includes(c.city));
+    new Chart(document.getElementById('topTierBubbleChart').getContext('2d'), {
+        type: 'bubble',
+        data: {
+            datasets: topTierCities.map((c, i) => ({
+                label: c.city,
+                data: [{
+                    x: c.vc_adj,
+                    y: c.unicorns,
+                    r: c.startups / 500 // Scale radius for visibility
+                }],
+                backgroundColor: colorPalette[i] + 'BF', // Add alpha
+                borderColor: colorPalette[i],
+                borderWidth: 2,
+            }))
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                ...universalPlugins,
+                legend: { display: true, position: 'bottom' },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const d = context.dataset.data[0];
+                            const label = context.dataset.label || '';
+                            const startups = d.r * 500;
+                            return `${label}: (VC: ${d.x}億, 獨角獸: ${d.y}, 新創: ${startups})`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { title: { display: true, text: 'VC總額 (億美元)' } },
+                y: { title: { display: true, text: '獨角獸數量' } }
+            }
+        }
+    });
+
+    const balancedLeadersData = {
+        labels: ['全球綜合排名', '資本規模', '獨角獸產出', '新創公司規模'],
+        datasets: [
+            {
+                label: '舊金山',
+                data: [10, 10, 10, 10], // Normalized scores out of 10
+                backgroundColor: colors.blue,
+            },
+            {
+                label: '倫敦',
+                data: [9, 7, 8, 8], // Normalized scores out of 10
+                backgroundColor: colors.teal,
+            }
+        ]
+    };
+    new Chart(document.getElementById('balancedLeadersBarChart').getContext('2d'), {
+        type: 'bar',
+        data: balancedLeadersData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { ...universalPlugins, legend: { display: true, position: 'top' } },
+            scales: {
+                y: {
+                    suggestedMax: 10,
+                    title: { display: true, text: '標準化分數 (滿分10分)' }
+                }
+            }
+        }
+    });
+
+    const seoul = cityData.find(c => c.city === '首爾');
+    const tokyo = cityData.find(c => c.city === '東京');
+    new Chart(document.getElementById('corporatePotentialChart').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: ['首爾 - 新創數量', '東京 - 新創數量'],
+            datasets: [{
+                label: '新創數量',
+                data: [seoul.startups, tokyo.startups],
+                backgroundColor: [colors.blue, colors.teal],
+                borderColor: '#FFFFFF',
+                borderWidth: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { ...universalPlugins, legend: { display: true, position: 'bottom' } },
+            cutout: '60%'
+        }
+    });
+    
+    const efficiencyData = cityData.map(c => ({
+        city: c.city,
+        value: c.unicorns > 0 ? (c.vc_adj / c.unicorns) : null
+    })).filter(c => c.value !== null).sort((a, b) => a.value - b.value);
+    new Chart(document.getElementById('efficiencyChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: efficiencyData.map(c => c.city),
+            datasets: [{
+                label: '億美元 / 獨角獸',
+                data: efficiencyData.map(c => c.value.toFixed(2)),
+                backgroundColor: colorPalette[0]
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { ...universalPlugins, legend: { display: false } },
+            scales: { x: { title: { display: true, text: '億美元 (越低越好)' } } }
+        }
+    });
+    
+    const funnelData = cityData.filter(c => c.unicorns > 0);
+    new Chart(document.getElementById('funnelScatterChart').getContext('2d'), {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: '創新生態系統',
+                data: funnelData.map(c => ({ x: c.startups, y: c.unicorns, label: c.city })),
+                backgroundColor: colors.blue + 'BF',
+                borderColor: colors.blue,
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                ...universalPlugins,
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const d = context.raw;
+                            return `${d.label}: (新創: ${d.x}, 獨角獸: ${d.y})`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    type: 'logarithmic',
+                    title: { display: true, text: '新創公司總數 (對數刻度)' }
+                },
+                y: {
+                    type: 'logarithmic',
+                    title: { display: true, text: '獨角獸數量 (對數刻度)' }
+                }
+            }
+        }
+    });
+
+</script>
+
+    </main>
+
+    </div>
+
+</body>
+</html>
