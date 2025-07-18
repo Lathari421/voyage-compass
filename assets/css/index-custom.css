@@ -421,7 +421,7 @@ article #main section.wrapper.style1:first-child .inner {
 }
 
 .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
+    transform: scaleX(1.6) scaleY(1.6);
     opacity: 0;
 }
 
