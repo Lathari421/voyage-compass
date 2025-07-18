@@ -78,6 +78,46 @@ body {
 .factor-2 { border-color: #FFD166; }
 .factor-3 { border-color: #06D6A0; }
 
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+thead {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+th {
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.875rem;
+}
+
+td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
 /* Table Header Override Styles */
 /* Override main.css table th color */
 .main-content table th {
@@ -92,6 +132,14 @@ body {
 /* Maximum specificity for table headers */
 .main-content .overflow-x-auto table thead.text-xs.text-black.uppercase.bg-gray-50 th {
     color: #000000 !important;
+}
+
+/* Table header specific styles */
+.table-header th {
+    background-color: #f8f9fa !important;
+    color: #000000 !important;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 /* Disable all hover effects for cards */
@@ -123,5 +171,15 @@ body {
     
     .main-content {
         margin-left: 0;
+    }
+    
+    /* Responsive table */
+    .overflow-x-auto {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    table {
+        min-width: 600px;
     }
 } 
