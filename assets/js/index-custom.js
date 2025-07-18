@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
         heroSection.style.minHeight = '60vh';
     }
     
-    // 初始化按鈕效果
-    initializeButtonEffects();
+    // 移除按鈕效果初始化，讓 CSS 效果完全生效
+    // initializeButtonEffects();
 });
 
 /**
@@ -109,7 +109,6 @@ function createRippleEffect(event, button) {
         transform: scale(0);
         animation: ripple-animation 0.6s linear;
         pointer-events: none;
-        z-index: 2;
     `;
     
     button.appendChild(ripple);

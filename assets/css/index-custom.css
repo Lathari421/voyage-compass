@@ -391,7 +391,6 @@ article #main section.wrapper.style1:first-child .inner {
     font-weight: 500;
     color: black;
     background-color: white;
-    overflow: hidden;
 }
 
 .btn:hover {
@@ -413,8 +412,11 @@ article #main section.wrapper.style1:first-child .inner {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: -1;
     transition: all 0.4s;
+}
+
+.btn::after {
     background-color: #fff;
 }
 
@@ -984,10 +986,11 @@ article #main section.wrapper.style1:first-child .inner {
         margin-top: 1.5rem;
     }
 
-    .btn {
+    /* 移除衝突的 .btn 樣式，讓主要樣式生效 */
+    /* .btn {
         font-size: 15px;
         padding: 0.8em 2em;
-    }
+    } */
 
     .features-hover-grid {
         grid-template-columns: 1fr;
