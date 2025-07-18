@@ -12,7 +12,7 @@
 // 城市數據
 const cityData = [
     { city: "舊金山", gser: 1, blink: 1, vc: 607, unicorns: 268, startups: 15030, vc_adj: 607 },
-    { city: "紐約市", gser: 2, blink: 2, vc: 1795, unicorns: 150, startups: 8750, vc_adj: 400 },
+    { city: "紐約市", gser: 2, blink: 2, vc: 400, unicorns: 150, startups: 8750, vc_adj: 400 },
     { city: "倫敦", gser: 3, blink: 3, vc: 108, unicorns: 103, startups: 7567, vc_adj: 108 },
     { city: "首爾", gser: 8, blink: 20, vc: 16.5, unicorns: 32, startups: 9567, vc_adj: 16.5 },
     { city: "新加坡", gser: 9, blink: 12, vc: 86, unicorns: 34, startups: 4600, vc_adj: 86 },
@@ -210,6 +210,21 @@ function initializeEfficiencyChart() {
         value: c.unicorns > 0 ? (c.vc_adj / c.unicorns) : null
     })).filter(c => c.value !== null).sort((a, b) => a.value - b.value);
     
+    // 為每個城市分配不同的顏色 - 使用更高對比度的顏色
+    const cityColors = {
+        '舊金山': '#FF4444',      // 鮮紅色
+        '紐約市': '#00CC88',      // 翠綠色
+        '倫敦': '#0066FF',        // 深藍色
+        '首爾': '#FF8800',        // 橙色
+        '新加坡': '#AA00FF',      // 紫色
+        '東京': '#00AAAA',        // 青色
+        '雪梨': '#FF0088',        // 粉紅色
+        '香港': '#8800FF',        // 深紫色
+        '溫哥華': '#FFAA00',      // 金黃色
+        '臺北': '#00FF88',        // 亮綠色
+        '曼谷': '#0088FF'         // 天藍色
+    };
+    
     new Chart(ctx.getContext('2d'), {
         type: 'bar',
         data: {
@@ -217,14 +232,43 @@ function initializeEfficiencyChart() {
             datasets: [{
                 label: '億美元 / 獨角獸',
                 data: efficiencyData.map(c => c.value.toFixed(2)),
-                backgroundColor: colorPalette[0]
+                backgroundColor: efficiencyData.map(c => cityColors[c.city] + 'CC'), // 添加透明度
+                borderColor: efficiencyData.map(c => cityColors[c.city]),
+                borderWidth: 2
             }]
         },
         options: {
             indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { ...universalPlugins, legend: { display: false } },
+            plugins: { 
+                ...universalPlugins, 
+                legend: { 
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 20,
+                        generateLabels: function(chart) {
+                            const labels = [];
+                            
+                            efficiencyData.forEach((city, index) => {
+                                labels.push({
+                                    text: city.city,
+                                    fillStyle: cityColors[city.city],
+                                    strokeStyle: cityColors[city.city],
+                                    lineWidth: 2,
+                                    pointStyle: 'rect',
+                                    hidden: false,
+                                    index: index
+                                });
+                            });
+                            
+                            return labels;
+                        }
+                    }
+                }
+            },
             scales: { x: { title: { display: true, text: '億美元 (越低越好)' } } }
         }
     });
@@ -240,19 +284,19 @@ function initializeFunnelScatterChart() {
     
     const funnelData = cityData.filter(c => c.unicorns > 0);
     
-    // 為每個城市分配不同的顏色
+    // 為每個城市分配不同的顏色 - 使用更高對比度的顏色
     const cityColors = {
-        '舊金山': '#FF6B6B',      // 紅色
-        '紐約市': '#4ECDC4',      // 青色
-        '倫敦': '#45B7D1',        // 藍色
-        '首爾': '#96CEB4',        // 綠色
-        '新加坡': '#FFEAA7',      // 黃色
-        '東京': '#DDA0DD',        // 紫色
-        '雪梨': '#FFB347',        // 橙色
-        '香港': '#98D8C8',        // 薄荷綠
-        '溫哥華': '#F7DC6F',      // 金黃色
-        '臺北': '#BB8FCE',        // 淡紫色
-        '曼谷': '#85C1E9'         // 天藍色
+        '舊金山': '#FF4444',      // 鮮紅色
+        '紐約市': '#00CC88',      // 翠綠色
+        '倫敦': '#0066FF',        // 深藍色
+        '首爾': '#FF8800',        // 橙色
+        '新加坡': '#AA00FF',      // 紫色
+        '東京': '#00AAAA',        // 青色
+        '雪梨': '#FF0088',        // 粉紅色
+        '香港': '#8800FF',        // 深紫色
+        '溫哥華': '#FFAA00',      // 金黃色
+        '臺北': '#00FF88',        // 亮綠色
+        '曼谷': '#0088FF'         // 天藍色
     };
     
     // 計算基於 VC 總額的點大小 (8-20 範圍)

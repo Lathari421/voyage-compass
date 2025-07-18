@@ -7,6 +7,130 @@
     DEPENDENCIES: Tailwind CSS
 ======================================== */
 
+/* Main Content Adjustment */
+.main-content {
+    margin-left: 208px;
+    min-height: 100vh;
+    position: relative;
+    top: 0;
+}
+
+/* Page Content Styles */
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #f8fafc;
+    color: #073B4C;
+}
+
+/* Left Menu Styles */
+.left-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #e2e8f0;
+}
+
+.menu-header {
+    padding: 1rem 1rem 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.menu-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.menu-logo-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-logo img {
+    height: 180px;
+    width: auto;
+    border-radius: 4px;
+}
+
+.menu-nav {
+    padding: 0.5rem 0;
+}
+
+.menu-section {
+    margin-bottom: 0.25rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    padding-left: 0.75rem;
+}
+
+.menu-item img {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.5rem;
+    margin-left: 0;
+    vertical-align: middle;
+}
+
+.menu-item .icon {
+    margin-right: 0.5rem;
+    margin-left: 0;
+    width: 1.2em;
+    display: inline-block;
+    color: #94a3b8;
+}
+
+.menu-item:hover {
+    background: #f1f5f9;
+    color: #3b82f6;
+}
+
+.menu-item:hover .icon {
+    color: #3b82f6;
+}
+
+.menu-item.active,
+.menu-item.active i,
+.menu-item[aria-current="page"],
+.menu-item[aria-current="page"] i {
+    color: #3b82f6 !important;
+}
+
+/* Main menu sections with light grey background */
+.main-menu-item {
+    background: #f1f5f9;
+    border-left: 4px solid #3b82f6;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 0;
+    margin: 0;
+    padding-left: 0.5rem;
+    text-align: left;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.main-menu-item .icon {
+    color: #64748b;
+}
+
+.main-menu-item:hover .icon {
+    color: #3b82f6;
+}
+
 /* 字體設定 */
 body {
     font-family: 'Noto Sans TC', sans-serif;
@@ -119,6 +243,19 @@ body {
 
 /* 響應式設計 */
 @media (max-width: 768px) {
+    .left-menu {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .left-menu.open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
     .quadrant-legend {
         grid-template-columns: 1fr;
     }
