@@ -109,6 +109,7 @@ function createRippleEffect(event, button) {
         transform: scale(0);
         animation: ripple-animation 0.6s linear;
         pointer-events: none;
+        z-index: 2;
     `;
     
     button.appendChild(ripple);
