@@ -90,15 +90,15 @@ table {
 }
 
 thead {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #e2e8f0;
+    background-color: #073B4C;
+    color: #FFFFFF;
 }
 
 th {
     padding: 0.75rem;
     text-align: left;
     font-weight: 600;
-    color: #374151;
+    color: #FFFFFF;
     border-bottom: 1px solid #e5e7eb;
     font-size: 0.875rem;
 }
@@ -118,6 +118,28 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
+/* Table row alternating colors */
+.table-row-even {
+    background-color: #FFFFFF;
+}
+
+.table-row-odd {
+    background-color: #F8F9FA;
+}
+
+/* Table header specific styles */
+.table-header {
+    background-color: #073B4C !important;
+    color: #FFFFFF !important;
+}
+
+.table-header th {
+    background-color: #073B4C !important;
+    color: #FFFFFF !important;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+}
+
 /* Table Header Override Styles */
 /* Override main.css table th color */
 .main-content table th {
@@ -132,14 +154,6 @@ tbody tr:last-child td {
 /* Maximum specificity for table headers */
 .main-content .overflow-x-auto table thead.text-xs.text-black.uppercase.bg-gray-50 th {
     color: #000000 !important;
-}
-
-/* Table header specific styles */
-.table-header th {
-    background-color: #f8f9fa !important;
-    color: #000000 !important;
-    font-weight: 600;
-    border-bottom: 2px solid #e2e8f0;
 }
 
 /* Disable all hover effects for cards */

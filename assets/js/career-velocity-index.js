@@ -324,17 +324,21 @@ function initializeDataTable(scores) {
     const tableBody = document.getElementById('dataTableBody');
     if (!tableBody) return;
 
+    tableBody.innerHTML = '';
     scores.forEach((s, index) => {
         const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
-        const row = tableBody.insertRow();
-        row.className = rowClass;
-        row.innerHTML = `
-            <td class="py-3 px-4 font-medium text-gray-900 whitespace-nowrap">${CITY_NAMES_TC[s.city] || s.city}</td>
-            <td class="py-3 px-4">${s.density}</td>
-            <td class="py-3 px-4">${s.vcGrowth}%</td>
-            <td class="py-3 px-4">${s.tenure}</td>
-            <td class="py-3 px-4 font-bold">${s.finalScore.toFixed(1)}</td>
-        `;
+        const row = `
+            <tr class="${rowClass}">
+                <td class="p-3 font-semibold">${CITY_NAMES_TC[s.city] || s.city}</td>
+                <td class="p-3 text-center">${s.density.toFixed(1)}</td>
+                <td class="p-3 text-center">${s.vcGrowth.toFixed(1)}%</td>
+                <td class="p-3 text-center">${s.tenure.toFixed(1)}</td>
+                <td class="p-3 text-center">${(s.densityScore * 0.4).toFixed(1)}</td>
+                <td class="p-3 text-center">${(s.vcGrowthScore * 0.35).toFixed(1)}</td>
+                <td class="p-3 text-center">${(s.fluidityScore * 0.25).toFixed(1)}</td>
+                <td class="p-3 text-center font-bold text-lg text-[#118AB2]">${s.finalScore.toFixed(1)}</td>
+            </tr>`;
+        tableBody.innerHTML += row;
     });
 }
 
