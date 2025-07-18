@@ -234,6 +234,12 @@ body {
     padding: 0.5rem;
     border-radius: 0.25rem;
     background-color: #f8f9fa;
+    color: #000000;
+}
+
+.quadrant-item b {
+    color: #000000;
+    font-weight: bold;
 }
 
 .quadrant-high-price-compact {
