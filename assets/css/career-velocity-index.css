@@ -148,20 +148,46 @@ tbody tr:last-child td {
     color: #FFFFFF !important;
 }
 
+/* Force override for table-header class */
+thead.table-header th,
+thead.table-header th span {
+    color: #FFFFFF !important;
+    background-color: #073B4C !important;
+}
+
 /* Table Header Override Styles */
 /* Override main.css table th color */
 .main-content table th {
-    color: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 /* More specific table header override */
 .main-content .overflow-x-auto table thead th {
-    color: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 /* Maximum specificity for table headers */
 .main-content .overflow-x-auto table thead.text-xs.text-black.uppercase.bg-gray-50 th {
-    color: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+/* Force override for all table headers in this page */
+#methodology-table table th,
+#methodology-table table thead th,
+#methodology-table table thead th span {
+    color: #FFFFFF !important;
+}
+
+/* Override any Tailwind text color classes */
+.text-black {
+    color: #FFFFFF !important;
+}
+
+/* Specific override for table headers */
+table th.text-black,
+table thead th.text-black,
+table th span.text-black {
+    color: #FFFFFF !important;
 }
 
 /* Disable all hover effects for cards */
