@@ -98,9 +98,13 @@ th {
     padding: 0.75rem;
     text-align: left;
     font-weight: 600;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     border-bottom: 1px solid #e5e7eb;
     font-size: 0.875rem;
+}
+
+th span {
+    color: #FFFFFF !important;
 }
 
 td {
@@ -138,6 +142,10 @@ tbody tr:last-child td {
     color: #FFFFFF !important;
     font-weight: 600;
     border-bottom: 2px solid #e2e8f0;
+}
+
+.table-header th span {
+    color: #FFFFFF !important;
 }
 
 /* Table Header Override Styles */
