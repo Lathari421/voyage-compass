@@ -230,4 +230,27 @@ table th span.text-black {
     table {
         min-width: 600px;
     }
+}
+
+/* Tailwind CSS Override - Force table header colors */
+.min-w-full.text-sm.text-left thead th,
+.min-w-full.text-sm.text-left thead th span {
+    color: #FFFFFF !important;
+    background-color: #073B4C !important;
+}
+
+/* Override any Tailwind text utilities on table headers */
+.text-left th,
+.text-left thead th,
+.text-left thead th span {
+    color: #FFFFFF !important;
+}
+
+/* Maximum specificity override for all table headers */
+table.min-w-full.text-sm.text-left thead th,
+table.min-w-full.text-sm.text-left thead th span,
+table.min-w-full.text-sm.text-left thead.table-header th,
+table.min-w-full.text-sm.text-left thead.table-header th span {
+    color: #FFFFFF !important;
+    background-color: #073B4C !important;
 } 
