@@ -377,20 +377,20 @@ article #main section.wrapper.style1:first-child .inner {
 
 /* Custom Button Styles */
 .btn {
-    position: relative;
-    font-size: 17px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1em 2.5em;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 6em;
-    transition: all 0.2s;
-    border: none;
-    font-family: inherit;
-    font-weight: 500;
-    color: black;
-    background-color: white;
+  position: relative;
+  font-size: 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1em 2.5em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 6em;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  color: black;
+  background-color: white;
 }
 
 .btn:hover {
@@ -404,20 +404,20 @@ article #main section.wrapper.style1:first-child .inner {
 }
 
 .btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s;
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
 }
 
 .btn::after {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .btn:hover::after {
@@ -755,6 +755,10 @@ article #main section.wrapper.style1:first-child .inner {
     overflow: visible;
     cursor: pointer;
     min-height: 320px;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    border-bottom: none;
 }
 
 /* Animated Border Effect for Feature Hover Cards */
