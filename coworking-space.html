@@ -296,6 +296,9 @@
                 <a href="coworking-space.html" class="menu-item active">
                     <img src="sample assets/briefcase.png" alt="Feature">Co-working Space Index
                 </a>
+                <a href="global-tech-env.html" class="menu-item">
+                    <img src="sample assets/technology.png" alt="Feature">City Tech Index
+                </a>
                 </a>
 
 
@@ -490,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 1; i < words.length; i++) {
             if ((currentLine + " " + words[i]).length > maxWidth) {
                 lines.push(currentLine);
-                currentLine = words[i];
+                currentLine = words[i]; 
             } else {
                 currentLine += " " + words[i];
             }
