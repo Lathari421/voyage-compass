@@ -53,11 +53,100 @@ const backgroundImages = [
 // Set random background on page load
 document.addEventListener('DOMContentLoaded', function() {
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
-    const heroSection = document.getElementById('hero');
-    heroSection.style.backgroundImage = `url('${backgroundImages[randomIndex]}')`;
+    const heroSection = document.getElementById('index-banner');
+    if (heroSection) {
+        heroSection.style.backgroundImage = `url('assets/images/${backgroundImages[randomIndex]}')`;
+        heroSection.style.backgroundSize = 'cover';
+        heroSection.style.backgroundPosition = 'center';
+        heroSection.style.backgroundRepeat = 'no-repeat';
+        heroSection.style.minHeight = '60vh';
+    }
+    
+    // 初始化按鈕效果
+    initializeButtonEffects();
 });
 
+/**
+ * 初始化按鈕點擊效果和動畫
+ * 為所有 .btn 類別的按鈕添加點擊動畫效果
+ */
+function initializeButtonEffects() {
+    // 為所有按鈕添加點擊效果
+    const buttons = document.querySelectorAll('.btn');
+    
+    buttons.forEach(button => {
+        // 添加點擊動畫效果
+        button.addEventListener('click', function(e) {
+            // 創建漣漪效果
+            createRippleEffect(e, this);
+            
+            // 添加點擊動畫
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+        
+        // 添加滑鼠進入效果
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+        });
+        
+        // 添加滑鼠離開效果
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+        });
+        
+        // 添加按下效果
+        button.addEventListener('mousedown', function() {
+            this.style.transform = 'translateY(-1px) scale(0.98)';
+            this.style.boxShadow = '0 5px 10px rgba(0, 0, 0, 0.2)';
+        });
+        
+        // 添加釋放效果
+        button.addEventListener('mouseup', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+        });
+    });
+}
 
+/**
+ * 創建按鈕點擊漣漪效果
+ * @param {Event} event - 點擊事件
+ * @param {HTMLElement} button - 按鈕元素
+ */
+function createRippleEffect(event, button) {
+    const ripple = document.createElement('span');
+    const rect = button.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.classList.add('ripple');
+    
+    // 添加漣漪樣式
+    ripple.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+    `;
+    
+    button.appendChild(ripple);
+    
+    // 動畫結束後移除漣漪元素
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+}
 
 // Smooth scrolling for menu items
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

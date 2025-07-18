@@ -34,26 +34,6 @@
                 <a href="index.html" class="menu-item main-menu-item">
                     首頁
                 </a>
-                <a href="index.html#characters" class="menu-item main-menu-item">
-                    角色情境
-                </a>
-                <a href="rocket-dev.html" class="menu-item">
-                    <i class="fas fa-rocket"
-                        style="margin-right:8px; color:#3b82f6; font-size:1em; vertical-align:middle;"></i>Rocket Dev
-                </a>
-                <a href="steady-pro.html" class="menu-item">
-                    <i class="fas fa-shield-alt"
-                        style="margin-right:8px; color:#10b981; font-size:1em; vertical-align:middle;"></i>Steady Pro
-                </a>
-                <a href="nomad-coder.html" class="menu-item">
-                    <i class="fas fa-laptop"
-                        style="margin-right:8px; color:#f59e0b; font-size:1em; vertical-align:middle;"></i>Nomad Coder
-                </a>
-                <a href="startup-maverick.html" class="menu-item">
-                    <i class="fas fa-lightbulb"
-                        style="margin-right:8px; color:#8b5cf6; font-size:1em; vertical-align:middle;"></i>Startup
-                    Maverick
-                </a>
                 <a href="index.html#gallery" class="menu-item main-menu-item">
                     城市探索
                 </a>
@@ -101,8 +81,33 @@
                     <img src="sample assets/hkg_icon_1.png" alt="Hong Kong"
                         style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Hong Kong
                 </a>
+                <a href="index.html#characters" class="menu-item main-menu-item">
+                    角色情境
+                </a>
+                <a href="rocket-dev.html" class="menu-item">
+                    <i class="fas fa-rocket"
+                        style="margin-right:8px; color:#3b82f6; font-size:1em; vertical-align:middle;"></i>Rocket Dev
+                </a>
+                <a href="steady-pro.html" class="menu-item">
+                    <i class="fas fa-shield-alt"
+                        style="margin-right:8px; color:#10b981; font-size:1em; vertical-align:middle;"></i>Steady Pro
+                </a>
+                <a href="nomad-coder.html" class="menu-item">
+                    <i class="fas fa-laptop"
+                        style="margin-right:8px; color:#f59e0b; font-size:1em; vertical-align:middle;"></i>Nomad Coder
+                </a>
+                <a href="startup-maverick.html" class="menu-item">
+                    <i class="fas fa-lightbulb"
+                        style="margin-right:8px; color:#8b5cf6; font-size:1em; vertical-align:middle;"></i>Startup
+                    Maverick
+                </a>
                 <a href="#" class="menu-item main-menu-item">
-                    關於我們
+                    指標一覽表
+                </a>
+                <a href="feature.html" class="menu-item">
+                    <img src="sample assets/compass.gif" alt="Feature"
+                    style="margin-right:8px; width:1em; height:1em; vertical-align:middle;">Career Velocity Index
+                </a>
                 </a>
 
 
@@ -278,34 +283,6 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/index-custom.js"></script>
-
-    <!-- 在 body 結尾插入隨機 banner 圖片 script -->
-    <script>
-        const bannerImages = [
-            'bangkok1.jpg', 'bangkok2.jpg', 'bangkok3.jpg',
-            'hongkong1.jpg', 'hongkong2.jpg', 'hongkong3.jpg', 'hongkong4.jpg', 'hongkong5.jpg',
-            'london1.jpg', 'london2.jpg', 'london3.jpg', 'london4.jpg', 'london5.jpg',
-            'nyc1.jpg', 'nyc2.jpg', 'nyc3.jpg', 'nyc4.jpg',
-            'seoul1.jpg', 'seoul2.jpg', 'seoul3.jpg', 'seoul4.jpg', 'seoul5.jpg',
-            'sf2.jpg', 'sf3.jpg', 'sf4.jpg',
-            'singapore1.jpg', 'singapore2.jpg', 'singapore4.jpg', 'singapore5.jpg',
-            'sydney1.jpg', 'sydney2.jpg', 'sydney3.jpg', 'sydney4.jpg',
-            'taipei1.jpg', 'taipei2.jpg', 'taipei3.jpg', 'taipei4.jpg',
-            'tokyo1.jpg', 'tokyo2.jpg', 'tokyo3.jpg', 'tokyo4.jpg', 'tokyo5.jpg',
-            'vancouver1.jpg', 'vancouver2.jpg', 'vancouver3.jpg', 'vancouver4.jpg', 'vancouver5.jpg'
-        ];
-        const randomImg = bannerImages[Math.floor(Math.random() * bannerImages.length)];
-        document.addEventListener('DOMContentLoaded', function () {
-            const banner = document.getElementById('index-banner');
-            if (banner) {
-                banner.style.backgroundImage = `url('assets/images/large/${randomImg}')`;
-                banner.style.backgroundSize = 'cover';
-                banner.style.backgroundPosition = 'center';
-                banner.style.backgroundRepeat = 'no-repeat';
-                banner.style.minHeight = '60vh';
-            }
-        });
-    </script>
 
 </body>
 
