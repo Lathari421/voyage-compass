@@ -11,6 +11,57 @@
 	<link rel="stylesheet" href="assets/css/global-tech-env.css" />
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<style>
+		/* 統一選單樣式 - 確保所有頁面一致 */
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+		}
+		
+		.menu-item {
+			display: flex;
+			align-items: center;
+			font-size: 0.85rem;
+			white-space: nowrap;
+			padding-left: 0.75rem;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+		}
+		
+		.menu-item img {
+			width: 1.2em;
+			height: 1.2em;
+			margin-right: 0.5rem;
+			margin-left: 0;
+			vertical-align: middle;
+		}
+		
+		.menu-item i {
+			margin-right: 0.5rem;
+			margin-left: 0;
+			width: 1.2em;
+			display: inline-block;
+			color: #94a3b8;
+		}
+		
+		.menu-item:hover {
+			background: #f1f5f9;
+			color: #3b82f6;
+		}
+		
+		.menu-item.active {
+			background: #dbeafe;
+			color: #3b82f6;
+			border-left: 3px solid #3b82f6;
+		}
+		
+		.menu-item.main-menu-item {
+			font-weight: 600;
+			color: #374151;
+			border-bottom: 1px dotted #d1d5db;
+			padding-bottom: 0.5rem;
+			margin-bottom: 0.5rem;
+		}
+	</style>
+
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
