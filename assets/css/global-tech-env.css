@@ -13,16 +13,21 @@
     min-height: 100vh;
     position: relative;
     top: 0;
-    padding-left: 1rem; /* 添加左邊距避免與選單重疊 */
+    padding-left: 2rem; /* 增加左邊距避免與選單重疊 */
 }
 
 /* 為容器添加額外的左邊距 */
 .container {
-    padding-left: 1rem;
+    padding-left: 2rem;
 }
 
 /* 為主要內容區域添加左邊距 */
 main {
+    padding-left: 2rem;
+}
+
+/* 為 header 添加額外的左邊距 */
+header {
     padding-left: 1rem;
 }
 
