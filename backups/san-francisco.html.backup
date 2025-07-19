@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>New York City - Voyage Compass</title>
+    <title>San Francisco - Voyage Compass</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -59,76 +59,6 @@
 			padding-bottom: 0;
 			margin-bottom: 0;
 		}
-
-		/* 縮小 Section 1 高度 - 僅適用於 New York City 頁面 */
-		.city-profile-full-width {
-			min-height: 60vh !important; /* 從 100vh 縮小到 60vh */
-		}
-
-		.city-profile-header {
-			min-height: 60vh !important; /* 從 100vh 縮小到 60vh */
-		}
-
-		/* 調整內容間距 */
-		.city-profile-content {
-			padding: 1.5rem !important; /* 從 2rem 縮小到 1.5rem */
-		}
-
-		.city-profile-content h1 {
-			font-size: 3rem !important; /* 從 4rem 縮小到 3rem */
-			margin-bottom: 0.5rem !important;
-		}
-
-		.city-profile-content h3 {
-			font-size: 1.5rem !important; /* 從 2rem 縮小到 1.5rem */
-			margin-bottom: 1rem !important;
-		}
-
-		/* 響應式調整 */
-		@media screen and (max-width: 980px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 60vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 2.5rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 1.25rem !important;
-			}
-		}
-
-		@media screen and (max-width: 736px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 60vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 2rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 1rem !important;
-			}
-		}
-
-		@media screen and (max-width: 480px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 60vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 1.75rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 0.9rem !important;
-			}
-		}
 	</style>
 
 	<noscript>
@@ -165,10 +95,10 @@
 				<a href="london.html" class="menu-item">
 					<img src="sample assets/lon_icon_1.png" alt="London">倫敦 London
 				</a>
-				<a href="new-york-city.html" class="menu-item active">
+				<a href="new-york-city.html" class="menu-item">
 					<img src="sample assets/nyc_icon_1.png" alt="New York City">紐約 New York City
 				</a>
-				<a href="san-francisco.html" class="menu-item">
+				<a href="san-francisco.html" class="menu-item active">
 					<img src="sample assets/sfo_icon_1.png" alt="San Francisco">舊金山 San Francisco
 				</a>
 				<a href="seoul.html" class="menu-item">
@@ -233,10 +163,10 @@
             <!-- Section 1: Heading, Subheading, City Image, Radar Chart -->
             <section class="wrapper style1 city-profile-full-width">
                 <div class="inner">
-                    <div class="city-profile-header" data-city="new-york">
+                    <div class="city-profile-header" data-city="san-francisco">
                         <div class="city-profile-content">
-                            <h1>New York City 城市檔案</h1>
-                            <h3>全球金融與科技創新中心</h3>
+                            <h1>San Francisco 城市檔案</h1>
+                            <h3>矽谷核心，全球科技創新中心</h3>
 
                             <!-- Radar Chart Section -->
                         </div>
@@ -246,10 +176,8 @@
                 </div>
             </section>
 
-            <!-- Horizontal Divider -->
             <hr class="section-divider" />
 
-            <!-- Section 2: Employment and Rental Data -->
             <section class="wrapper style2">
                 <div class="inner">
                     <div class="employment-section">
@@ -324,22 +252,22 @@
                             <div class="data-grid">
                                 <div class="data-item">
                                     <h3>平均薪資</h3>
-                                    <p class="data-value">USD 120,000</p>
+                                    <p class="data-value">USD 165,000</p>
                                     <p class="data-label">年薪</p>
                                 </div>
                                 <div class="data-item">
                                     <h3>租房成本</h3>
-                                    <p class="data-value">USD 4,200</p>
+                                    <p class="data-value">USD 5,200</p>
                                     <p class="data-label">月租</p>
                                 </div>
                                 <div class="data-item">
                                     <h3>就業率</h3>
-                                    <p class="data-value">94.8%</p>
+                                    <p class="data-value">96.5%</p>
                                     <p class="data-label">整體就業</p>
                                 </div>
                                 <div class="data-item">
                                     <h3>科技職缺</h3>
-                                    <p class="data-value">45,000+</p>
+                                    <p class="data-value">38,000+</p>
                                     <p class="data-label">開放職位</p>
                                 </div>
                             </div>
@@ -348,21 +276,19 @@
                 </div>
             </section>
 
-            <!-- Horizontal Divider -->
             <hr class="section-divider" />
 
-            <!-- Section 3: Four Data Cards -->
             <section class="wrapper style3">
                 <div class="inner">
                     <div class="stats-grid">
                         <div class="stat-card">
                             <h3>人口統計</h3>
                             <div class="stat-content">
-                                <div class="stat-number">8.3M</div>
+                                <div class="stat-number">874K</div>
                                 <p>總人口</p>
                                 <div class="stat-details">
-                                    <span>密度: 11,000/km²</span>
-                                    <span>外籍人士: 22%</span>
+                                    <span>密度: 7,500/km²</span>
+                                    <span>外籍人士: 35%</span>
                                 </div>
                             </div>
                         </div>
@@ -370,11 +296,11 @@
                         <div class="stat-card">
                             <h3>生活成本</h3>
                             <div class="stat-content">
-                                <div class="stat-number">$$$$$</div>
+                                <div class="stat-number">$$$$$$</div>
                                 <p>成本等級</p>
                                 <div class="stat-details">
-                                    <span>飲食: USD 25/餐</span>
-                                    <span>交通: USD 127/月</span>
+                                    <span>飲食: USD 35/餐</span>
+                                    <span>交通: USD 98/月</span>
                                 </div>
                             </div>
                         </div>
@@ -382,23 +308,23 @@
                         <div class="stat-card">
                             <h3>安全指數</h3>
                             <div class="stat-content">
-                                <div class="stat-number">78.2</div>
+                                <div class="stat-number">82.1</div>
                                 <p>安全評分</p>
                                 <div class="stat-details">
-                                    <span>犯罪率: 中等</span>
-                                    <span>醫療: 優秀</span>
+                                    <span>犯罪率: 中低</span>
+                                    <span>排名: 全球第35</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="stat-card">
-                            <h3>交通系統</h3>
+                            <h3>生活品質</h3>
                             <div class="stat-content">
-                                <div class="stat-number">A+</div>
-                                <p>交通評級</p>
+                                <div class="stat-number">91.2</div>
+                                <p>品質評分</p>
                                 <div class="stat-details">
-                                    <span>地鐵: 24H</span>
-                                    <span>覆蓋: 全市</span>
+                                    <span>醫療: 優質服務</span>
+                                    <span>教育: 創新導向</span>
                                 </div>
                             </div>
                         </div>

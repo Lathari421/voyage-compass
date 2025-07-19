@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Vancouver - Voyage Compass</title>
+	<title>Seoul - Voyage Compass</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -59,76 +59,6 @@
 			padding-bottom: 0;
 			margin-bottom: 0;
 		}
-
-		/* 縮小 Section 1 高度 - 適用於 Vancouver 頁面 */
-		.city-profile-full-width {
-			min-height: 60vh !important; /* 從 100vh 縮小到 60vh */
-		}
-
-		.city-profile-header {
-			min-height: 60vh !important; /* 從 100vh 縮小到 60vh */
-		}
-
-		/* 調整內容間距 */
-		.city-profile-content {
-			padding: 1.5rem !important; /* 從 2rem 縮小到 1.5rem */
-		}
-
-		.city-profile-content h1 {
-			font-size: 3rem !important; /* 從 4rem 縮小到 3rem */
-			margin-bottom: 0.5rem !important;
-		}
-
-		.city-profile-content h3 {
-			font-size: 1.5rem !important; /* 從 2rem 縮小到 1.5rem */
-			margin-bottom: 1rem !important;
-		}
-
-		/* 響應式調整 */
-		@media screen and (max-width: 980px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 50vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 2.5rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 1.25rem !important;
-			}
-		}
-
-		@media screen and (max-width: 736px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 45vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 2rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 1rem !important;
-			}
-		}
-
-		@media screen and (max-width: 480px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 40vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 1.75rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 0.9rem !important;
-			}
-		}
 	</style>
 
 	<noscript>
@@ -170,7 +100,7 @@
 				<a href="san-francisco.html" class="menu-item">
 					<img src="sample assets/sfo_icon_1.png" alt="San Francisco">舊金山 San Francisco
 				</a>
-				<a href="seoul.html" class="menu-item">
+				<a href="seoul.html" class="menu-item active">
 					<img src="sample assets/sel_icon_1.png" alt="Seoul">首爾 Seoul
 				</a>
 				<a href="singapore.html" class="menu-item">
@@ -185,7 +115,7 @@
 				<a href="tokyo.html" class="menu-item">
 					<img src="sample assets/tyo_icon_1.png" alt="Tokyo">東京 Tokyo
 				</a>
-				<a href="vancouver.html" class="menu-item active">
+				<a href="vancouver.html" class="menu-item">
 					<img src="sample assets/yvr_icon_1.png" alt="Vancouver">溫哥華 Vancouver
 				</a>
 				<a href="index.html#characters" class="menu-item main-menu-item">
@@ -230,10 +160,10 @@
 		<article id="main">
 			<section class="wrapper style1 city-profile-full-width">
 				<div class="inner">
-					<div class="city-profile-header" data-city="vancouver">
+					<div class="city-profile-header" data-city="seoul">
 						<div class="city-profile-content">
-							<h1>Vancouver 城市檔案</h1>
-							<h3>加拿大太平洋門戶與宜居山海之城</h3>
+							<h1>Seoul 城市檔案</h1>
+							<h3>韓國科技創新中心與現代化都市</h3>
 						</div>
 					</div>
 				</div>
@@ -315,22 +245,22 @@
 							<div class="data-grid">
 								<div class="data-item">
 									<h3>平均薪資</h3>
-									<p class="data-value">CAD 82,000</p>
+									<p class="data-value">KRW 65,000,000</p>
 									<p class="data-label">年薪</p>
 								</div>
 								<div class="data-item">
 									<h3>租房成本</h3>
-									<p class="data-value">CAD 2,800</p>
+									<p class="data-value">KRW 1,800,000</p>
 									<p class="data-label">月租</p>
 								</div>
 								<div class="data-item">
 									<h3>就業率</h3>
-									<p class="data-value">97.2%</p>
+									<p class="data-value">96.3%</p>
 									<p class="data-label">整體就業</p>
 								</div>
 								<div class="data-item">
 									<h3>科技職缺</h3>
-									<p class="data-value">15,000+</p>
+									<p class="data-value">22,000+</p>
 									<p class="data-label">開放職位</p>
 								</div>
 							</div>
@@ -347,44 +277,44 @@
 						<div class="stat-card">
 							<h3>人口統計</h3>
 							<div class="stat-content">
-								<div class="stat-number">2.6M</div>
+								<div class="stat-number">9.7M</div>
 								<p>總人口</p>
 								<div class="stat-details">
-									<span>密度: 5,493/km²</span>
-									<span>外籍人士: 51%</span>
+									<span>密度: 16,000/km²</span>
+									<span>外籍人士: 4%</span>
 								</div>
 							</div>
 						</div>
 						<div class="stat-card">
 							<h3>生活成本</h3>
 							<div class="stat-content">
-								<div class="stat-number">$$$</div>
+								<div class="stat-number">$$</div>
 								<p>成本等級</p>
 								<div class="stat-details">
-									<span>飲食: CAD 18/餐</span>
-									<span>交通: CAD 120/月</span>
+									<span>飲食: KRW 12,000/餐</span>
+									<span>交通: KRW 62,000/月</span>
 								</div>
 							</div>
 						</div>
 						<div class="stat-card">
 							<h3>安全指數</h3>
 							<div class="stat-content">
-								<div class="stat-number">93.8</div>
+								<div class="stat-number">89.7</div>
 								<p>安全評分</p>
 								<div class="stat-details">
-									<span>犯罪率: 極低</span>
-									<span>排名: 全球第5</span>
+									<span>犯罪率: 低</span>
+									<span>排名: 全球第10</span>
 								</div>
 							</div>
 						</div>
 						<div class="stat-card">
 							<h3>生活品質</h3>
 							<div class="stat-content">
-								<div class="stat-number">96.8</div>
+								<div class="stat-number">85.4</div>
 								<p>品質評分</p>
 								<div class="stat-details">
-									<span>醫療: 全民醫保</span>
-									<span>教育: 國際認可</span>
+									<span>醫療: 先進技術</span>
+									<span>教育: 亞洲頂尖</span>
 								</div>
 							</div>
 						</div>
@@ -393,7 +323,19 @@
 			</section>
 		</article>
 
-		
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; 2024 Voyage Compass. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
 	</div>
 
 	<script src="assets/js/jquery.min.js"></script>

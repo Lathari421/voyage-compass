@@ -59,76 +59,6 @@
 			padding-bottom: 0;
 			margin-bottom: 0;
 		}
-
-		/* 縮小 Section 1 高度 - 適用於 Vancouver 頁面 */
-		.city-profile-full-width {
-			min-height: 60vh !important; /* 從 100vh 縮小到 60vh */
-		}
-
-		.city-profile-header {
-			min-height: 60vh !important; /* 從 100vh 縮小到 60vh */
-		}
-
-		/* 調整內容間距 */
-		.city-profile-content {
-			padding: 1.5rem !important; /* 從 2rem 縮小到 1.5rem */
-		}
-
-		.city-profile-content h1 {
-			font-size: 3rem !important; /* 從 4rem 縮小到 3rem */
-			margin-bottom: 0.5rem !important;
-		}
-
-		.city-profile-content h3 {
-			font-size: 1.5rem !important; /* 從 2rem 縮小到 1.5rem */
-			margin-bottom: 1rem !important;
-		}
-
-		/* 響應式調整 */
-		@media screen and (max-width: 980px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 50vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 2.5rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 1.25rem !important;
-			}
-		}
-
-		@media screen and (max-width: 736px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 45vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 2rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 1rem !important;
-			}
-		}
-
-		@media screen and (max-width: 480px) {
-			.city-profile-full-width,
-			.city-profile-header {
-				min-height: 40vh !important;
-			}
-			
-			.city-profile-content h1 {
-				font-size: 1.75rem !important;
-			}
-			
-			.city-profile-content h3 {
-				font-size: 0.9rem !important;
-			}
-		}
 	</style>
 
 	<noscript>
@@ -393,7 +323,19 @@
 			</section>
 		</article>
 
-		
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; 2024 Voyage Compass. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
 	</div>
 
 	<script src="assets/js/jquery.min.js"></script>
