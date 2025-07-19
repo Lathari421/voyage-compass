@@ -321,17 +321,7 @@ function renderAllCharts() {
         options: {
             responsive: true, 
             maintainAspectRatio: false,
-            plugins: { 
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            const value = context.parsed;
-                            if (typeof value === "number") { return `${context.label}: $${parseFloat(value).toFixed(2)}`; } return context.label;
-                        }
-                    }
-                }
-            },
+            plugins: { legend: { display: false } },
             scales: { 
                 y: { 
                     title: { display: true, text: '月租金 (USD) - 對數標尺' }, 

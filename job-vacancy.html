@@ -9,11 +9,11 @@
 	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 	<link rel="stylesheet" href="assets/css/index-custom.css" />
 	<link rel="stylesheet" href="assets/css/job-vacancy.css" />
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		<style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
 		/* 統一選單樣式 - 確保所有頁面一致 */
-		body {
+        body {
 			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 		}
 		
@@ -59,8 +59,8 @@
 			border-bottom: none;
 			padding-bottom: 0;
 			margin-bottom: 0;
-		}
-	</style>
+        }
+    </style>
 
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
@@ -168,97 +168,97 @@
 
         <main class="container mx-auto px-4 py-8">
 
-            <div class="section-card mb-8">
-                <label for="city-select" class="block mb-2 font-bold text-slate-700">選擇一個城市以深入探索：</label>
-                <select id="city-select" class="w-full p-3 border border-slate-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
-                    <option value="all">全球總覽</option>
-                </select>
-            </div>
+        <div class="section-card mb-8">
+            <label for="city-select" class="block mb-2 font-bold text-slate-700">選擇一個城市以深入探索：</label>
+            <select id="city-select" class="w-full p-3 border border-slate-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                <option value="all">全球總覽</option>
+            </select>
+        </div>
 
-            <div id="view-container">
-                <div id="global-view">
-                    <div class="section-card mb-8">
+        <div id="view-container">
+            <div id="global-view">
+                <div class="section-card mb-8">
                         <h2 class="text-2xl font-bold mb-1 section-title">全球 Junior 職位機會比較</h2>
-                        <p class="text-slate-600 mb-6">此圖表依據 Junior 職位佔該城市總職位的比例進行排名，幫助求職者快速識別初階職位機會最多的市場。</p>
-                        <div class="chart-container" style="height: 400px; max-height: 500px;">
-                            <canvas id="juniorRatioChart"></canvas>
-                        </div>
-                    </div>
-                     <div class="section-card">
-                        <h2 class="text-2xl font-bold mb-4 section-title">各城市職缺數據總表</h2>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-slate-200">
-                                <thead class="bg-slate-100">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">排名</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">城市</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">總職位</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Junior 職位</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Mid 職位</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Senior 職位</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Junior 比例</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="global-table-body" class="bg-white divide-y divide-slate-200">
-                                </tbody>
-                            </table>
-                        </div>
+                    <p class="text-slate-600 mb-6">此圖表依據 Junior 職位佔該城市總職位的比例進行排名，幫助求職者快速識別初階職位機會最多的市場。</p>
+                    <div class="chart-container" style="height: 400px; max-height: 500px;">
+                        <canvas id="juniorRatioChart"></canvas>
                     </div>
                 </div>
-                
-                <div id="city-view" class="hidden">
-                     <h2 id="city-name-header" class="text-3xl font-bold text-center mb-8 text-slate-900"></h2>
-                     
-                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        <div class="stat-card">
-                            <p class="text-sm text-slate-500">總職缺數</p>
-                            <p id="total-jobs" class="text-2xl font-bold"></p>
-                        </div>
-                        <div class="stat-card">
-                            <p class="text-sm text-slate-500">Junior 職缺</p>
-                            <p id="junior-jobs" class="text-2xl font-bold"></p>
-                        </div>
-                        <div class="stat-card">
-                            <p class="text-sm text-slate-500">Mid-level 職缺</p>
-                            <p id="mid-jobs" class="text-2xl font-bold"></p>
-                        </div>
-                        <div class="stat-card">
-                            <p class="text-sm text-slate-500">Senior 職缺</p>
-                            <p id="senior-jobs" class="text-2xl font-bold"></p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                        <div class="section-card">
-                            <h3 class="text-xl font-bold mb-4 text-slate-900">職位層級分佈</h3>
-                             <div class="chart-container">
-                                <canvas id="seniorityChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="section-card">
-                            <h3 class="text-xl font-bold mb-4 text-slate-900">公司規模分佈</h3>
-                             <div class="chart-container">
-                                <canvas id="companySizeChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div class="section-card">
-                            <h3 class="text-xl font-bold mb-4 text-slate-900">公司來源 (本地 vs. 國際)</h3>
-                            <div class="chart-container">
-                                <canvas id="companyOriginChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="section-card bg-sky-50 border border-sky-200">
-                             <h3 class="text-xl font-bold mb-4 text-sky-900">求職建議</h3>
-                             <p id="job-advice" class="text-lg text-sky-800 leading-relaxed"></p>
-                        </div>
+                 <div class="section-card">
+                        <h2 class="text-2xl font-bold mb-4 section-title">各城市職缺數據總表</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-slate-200">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">排名</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">城市</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">總職位</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Junior 職位</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Mid 職位</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Senior 職位</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Junior 比例</th>
+                                </tr>
+                            </thead>
+                            <tbody id="global-table-body" class="bg-white divide-y divide-slate-200">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+            
+            <div id="city-view" class="hidden">
+                 <h2 id="city-name-header" class="text-3xl font-bold text-center mb-8 text-slate-900"></h2>
+                 
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="stat-card">
+                        <p class="text-sm text-slate-500">總職缺數</p>
+                        <p id="total-jobs" class="text-2xl font-bold"></p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="text-sm text-slate-500">Junior 職缺</p>
+                        <p id="junior-jobs" class="text-2xl font-bold"></p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="text-sm text-slate-500">Mid-level 職缺</p>
+                        <p id="mid-jobs" class="text-2xl font-bold"></p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="text-sm text-slate-500">Senior 職缺</p>
+                        <p id="senior-jobs" class="text-2xl font-bold"></p>
+                    </div>
+                </div>
 
-        </main>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <div class="section-card">
+                        <h3 class="text-xl font-bold mb-4 text-slate-900">職位層級分佈</h3>
+                         <div class="chart-container">
+                            <canvas id="seniorityChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="section-card">
+                        <h3 class="text-xl font-bold mb-4 text-slate-900">公司規模分佈</h3>
+                         <div class="chart-container">
+                            <canvas id="companySizeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="section-card">
+                        <h3 class="text-xl font-bold mb-4 text-slate-900">公司來源 (本地 vs. 國際)</h3>
+                        <div class="chart-container">
+                            <canvas id="companyOriginChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="section-card bg-sky-50 border border-sky-200">
+                         <h3 class="text-xl font-bold mb-4 text-sky-900">求職建議</h3>
+                         <p id="job-advice" class="text-lg text-sky-800 leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
 
     </div>
 
