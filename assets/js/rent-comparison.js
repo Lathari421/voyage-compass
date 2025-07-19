@@ -327,7 +327,7 @@ function renderAllCharts() {
                     callbacks: {
                         label: function(context) {
                             const value = context.parsed;
-                            if (typeof value === "number") { return `${context.label}: $${value.toFixed(2)}`; } return context.label;
+                            if (typeof value === "number") { return `${context.label}: $${parseFloat(value).toFixed(2)}`; } return context.label;
                         }
                     }
                 }
