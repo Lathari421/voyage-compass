@@ -62,7 +62,9 @@
 		
 		/* 醫療費用頁面特定樣式 */
 		body {
-			background-color: #f0f4f8; 
+			background-color: #f8f9fa; 
+			font-family: 'Noto Sans TC', sans-serif;
+			color: #073B4C;
 		}
 		
 		.chart-container {
@@ -124,6 +126,56 @@
             padding-bottom: 0.5rem;
             display: block;
             text-align: center;
+        }
+        
+        /* Main Content Adjustment - 與 career-velocity-index.html 一致 */
+        .main-content {
+            margin-left: 208px;
+            min-height: 100vh;
+            position: relative;
+            top: 0;
+            padding-left: 2rem; /* 增加左邊距避免與選單重疊 */
+        }
+        
+        /* 為容器添加額外的左邊距 */
+        .container {
+            padding-left: 2rem;
+        }
+        
+        /* 為主要內容區域添加左邊距 */
+        main {
+            padding-left: 2rem;
+        }
+        
+        /* 為 header 添加額外的左邊距 */
+        header {
+            padding-left: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .left-menu {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .left-menu.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            /* Responsive table */
+            .overflow-x-auto {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            table {
+                min-width: 600px;
+            }
         }
 	</style>
 
